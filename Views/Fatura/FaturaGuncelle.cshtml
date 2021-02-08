@@ -1,0 +1,43 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Fatura
+@{
+    ViewBag.Title = "FaturaGuncelle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Fatura Guncelleme Sayfası</h2>
+<br />
+
+@using (Html.BeginForm("FaturaGuncelle", "Fatura", FormMethod.Post))
+{
+
+@Html.HiddenFor(x => x.FaturaId)
+
+@Html.LabelFor(x => x.FaturaSiraNo)
+<br />
+@Html.TextBoxFor(x => x.FaturaSiraNo, new { @class = "form-control" })
+@*@Html.ValidationMessageFor(x => x.UrunAd, "", new { @style = "color:red" })*@
+<br />
+@Html.LabelFor(x => x.Tarih)
+<br />
+@Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })
+@*@Html.ValidationMessageFor(x => x.Marka, "", new { @style = "color:red" })*@
+<br />
+@Html.LabelFor(x => x.Saat)
+<br />
+@Html.TextBoxFor(x => x.Saat, new { @class = "form-control" })
+<br />
+@Html.LabelFor(x => x.VergiDairesi)
+<br />
+@Html.TextBoxFor(x => x.VergiDairesi, new { @class = "form-control" })
+<br />
+@Html.LabelFor(x => x.TeslimAlan)
+<br />
+@Html.TextBoxFor(x => x.TeslimAlan, new { @class = "form-control" })
+<br />
+@Html.LabelFor(x => x.TeslimEden)
+<br />
+@Html.TextBoxFor(x => x.TeslimEden, new { @class = "form-control" })
+<br />
+
+<button class="btn btn-info">Kaydet</button>
+}

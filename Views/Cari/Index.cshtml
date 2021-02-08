@@ -1,0 +1,45 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@model List<Cariler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Cariler</h2>
+@*<br />
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Departman Adı : @ViewBag.dpt</li>
+    </ol>*@
+<br />
+<table class="table table-striped">
+    <tr>
+        <td>Cari ID</td>
+        <td>Ad</td>
+        <td>Soyad</td>
+        <td>Şehir</td>
+        <td>Mail</td>
+        <td>Sil</td>
+        <td>Güncelle</td>
+        <td>Detay</td>
+    </tr>
+
+    @foreach (var c in Model)
+    {
+        <tr>
+            <td>@c.CariId</td>
+            <td>@c.CariAd</td>
+            <td>@c.CariSoyad</td>
+            <td>@c.CariSehir</td>
+            <td>@c.CariMail</td>
+            <td><a href="/Cari/CariSil/@c.CariId" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Cari/CariGuncelle/@c.CariId" class="btn btn-success">Güncelle</a></td>
+            <td><a href="/Cari/CariDetay/@c.CariId" class="btn btn-info">Detay</a></td>
+        </tr>
+
+    }
+
+
+</table>
+<a href="/Cari/YeniCariEkle" class="btn btn-primary"> Yeni Cari Ekle  </a>
+

@@ -1,0 +1,35 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Personel
+@{
+    ViewBag.Title = "PersonelGuncelle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>PersonelGuncelle</h2>
+<br />
+@using (Html.BeginForm("PersonelGuncelle", "Personel", FormMethod.Post))
+{
+
+    @Html.HiddenFor(x => x.PersonelId)
+
+    @Html.LabelFor(x => x.PersonelAd)
+    <br />
+    @Html.TextBoxFor(x => x.PersonelAd, new { @class = "form-control" })
+    @*@Html.ValidationMessageFor(x => x.UrunAd, "", new { @style = "color:red" })*@
+    <br />
+    @Html.LabelFor(x => x.PersonelSoyad)
+    <br />
+    @Html.TextBoxFor(x => x.PersonelSoyad, new { @class = "form-control" })
+    @*@Html.ValidationMessageFor(x => x.Marka, "", new { @style = "color:red" })*@
+    <br />
+    @Html.LabelFor(x => x.Departman)
+    <br />
+    @Html.DropDownListFor(x => x.DepartmanId, (List<SelectListItem>)ViewBag.deger1, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.PersonelGorsel)
+    <br />
+    @Html.TextBoxFor(x => x.PersonelGorsel, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-info">Kaydet</button>
+}
+

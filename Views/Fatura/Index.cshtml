@@ -1,0 +1,41 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@model List<Fatura>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Faturalar</h2>
+<br />
+
+<table class="table table-bordered">
+    <tr>
+        <td>Fatura ID</td>
+        <td>Sıra  No</td>
+        <td>Tarih</td>
+        <td>Saat</td>
+        <td>Vergi Dairesi</td>
+        <td>Teslim Eden</td>
+        <td>Teslim Alan</td>
+        <td>Toplam Tutar</td>
+        <td>Güncelle</td>
+        <td>Detay</td>
+    </tr>
+    @foreach (var f in Model)
+    {
+        <tr>
+            <td>@f.FaturaId</td>
+            <td>@f.FaturaSiraNo</td>
+            <td>@f.Tarih</td>
+            <td>@f.Saat</td>
+            <td>@f.VergiDairesi</td>
+            <td>@f.TeslimAlan</td>
+            <td>@f.TeslimEden</td>
+            <td>@f.ToplamTutar</td>
+            <td><a href="/Fatura/FaturaGuncelle/@f.FaturaId" class="btn btn-warning">Güncelle</a></td>
+            <td><a href="/Fatura/FaturaDetay/@f.FaturaId" class="btn btn-info">Detay</a></td>
+        </tr>
+
+    }
+</table>
+<a href="/Fatura/YeniFaturaEkle" class="btn btn-success"> Yeni Fatura Ekle </a>

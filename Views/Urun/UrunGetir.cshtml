@@ -1,0 +1,54 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Urun
+@{
+    ViewBag.Title = "UrunGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>UrunGuncelle</h2>
+<br />
+@using (Html.BeginForm("UrunGuncelle", "Urun", FormMethod.Post))
+{
+
+    @Html.HiddenFor(x => x.UrunID)
+
+    @Html.LabelFor(x => x.UrunAd)
+    <br />
+    @Html.TextBoxFor(x => x.UrunAd, new { @class = "form-control" })
+    @*@Html.ValidationMessageFor(x => x.UrunAd, "", new { @style = "color:red" })*@
+    <br />
+    @Html.LabelFor(x => x.Marka)
+    <br />
+    @Html.TextBoxFor(x => x.Marka, new { @class = "form-control" })
+    @*@Html.ValidationMessageFor(x => x.Marka, "", new { @style = "color:red" })*@
+    <br />
+    @Html.LabelFor(x => x.Stok)
+    <br />
+    @Html.TextBoxFor(x => x.Stok, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Durum)
+    <br />
+    @Html.TextBoxFor(x => x.Durum, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.AlisFiyati)
+    <br />
+    @Html.TextBoxFor(x => x.AlisFiyati, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.SatisFiyati)
+    <br />
+    @Html.TextBoxFor(x => x.SatisFiyati, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Kategori.KategoriAd)
+    <br />
+    @Html.DropDownListFor(x => x.KategoryId, (List<SelectListItem>)ViewBag.deger1, new { @class = "form-control" })
+    @*@Html.ValidationMessageFor(x => x.KategoryId, "", new { @style = "color:red" })*@
+    <br />
+    @Html.LabelFor(x => x.UrunGorsel)
+    <br />
+    @Html.TextBoxFor(x => x.UrunGorsel, new { @class = "form-control" })
+    @*@Html.ValidationMessageFor(x => x.Marka, "", new { @style = "color:red" })*@
+    <br />
+
+    <button class="btn btn-info">Kaydet</button>
+}
+
+

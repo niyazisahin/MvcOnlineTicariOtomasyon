@@ -1,0 +1,23 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Yapilacaklar
+@{
+    ViewBag.Title = "YapilacakEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Yapilacaklar Listesine Ekleme Sayfası</h2>
+<br />
+
+<form class="form-group" method="post">
+    @Html.LabelFor(x => x.YapilacakBaslik)
+    <br />
+    @Html.TextBoxFor(x => x.YapilacakBaslik, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Gun)
+    <br />
+    @Html.TextBoxFor(x => x.Gun, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-info">Ekle</button>
+
+</form>
+
