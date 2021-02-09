@@ -2905,6 +2905,7 @@
     <Content Include="webpanel\vendor\jquery\jquery.min.map" />
     <Content Include="webpanel\vendor\jquery\jquery.slim.min.map" />
     <Content Include="Views\Shared\_CariLayout.cshtml" />
+    <Content Include="Views\Login\CariLogin.cshtml" />
     <Content Include="Views\CariPanel\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

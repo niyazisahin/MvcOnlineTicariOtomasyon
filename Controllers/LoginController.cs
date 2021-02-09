@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MvcOnlineTicariOtomasyon.Models.Siniflar;
+using System.Web.Security;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
@@ -28,6 +29,31 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             context.Carilers.Add(c);
             context.SaveChanges();
             return PartialView();
+        }
+
+
+
+        [HttpGet]
+        public ActionResult CariLogin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CariLogin(Cariler c)
+        {
+            var cariBilgi = context.Carilers.FirstOrDefault(x => x.CariMail == c.CariMail && x.CariSifre == c.CariSifre);
+            if (cariBilgi != null)
+            {
+                FormsAuthentication.SetAuthCookie(cariBilgi.CariMail, false);
+                Session["CariMail"] = cariBilgi.CariMail.ToString();
+                return RedirectToAction("Index", "CariPanel");  
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            
         }
     }
 }
