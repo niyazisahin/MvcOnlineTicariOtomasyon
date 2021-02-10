@@ -60,9 +60,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="register-left">
                 <div class="register">
                     <br /><br /><br />
-                    @*<p>Online Proje Geliştir</p>*@
                     <h1>Online Proje Geliştir</h1>
-                    @*<h2>Aenean in est pretium</h2>*@
                     <p>
                         İstediğiniz Yerden Ticari Otomasyonunuza Erişin, İşlerinizi Gerçekleştirin.
                     </p>
@@ -95,8 +93,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- //section -->
     <!-- login form popup-->
     <div class="pop-up">
-        @*@Html.Action("CariLogin", "Login")*@
-        
         <div id="small-dialog" class="mfp-hide book-form">
 
             <div class="login-form login-form-left">
@@ -105,12 +101,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <span class="fa fa-lock"></span>
                     <div class="clear"></div>
                     <div class="login-agileits-top">
-                        @using (Html.BeginForm("CariLogin", "Login", FormMethod.Post))
+                        @using (Html.BeginForm("CariLogin1", "Login", FormMethod.Post))
                         {
 
                             <input type="text" class="name" name="CariMail" Placeholder="Mail Adresi" required="" />
                             <input type="password" class="password" name="CariSifre" Placeholder="Şifre" required="" />
-                            <input type="submit" value="Giriş Yap">
+                            <input type="submit" value="Giriş Yap" >
                             
                         }
                     </div>
@@ -133,11 +129,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     @*<p>Sign up to get notified about latest offers, news and events. Stay tuned!</p>*@
                     <div class="clear"></div>
                     <div class="login-agileits-top">
-                        <form action="#" method="post">
+                        @using (Html.BeginForm("PersonelLogin", "Login", FormMethod.Post))
+                        {
+
                             <input type="text" class="name" name="KullaniciAd" Placeholder="Kullanıcı Adı" required="" />
                             <input type="password" class="password" name="Sifre" Placeholder="Şifre" required="" />
                             <input type="submit" value="Giriş Yap">
-                        </form>
+
+                        }
                     </div>
                 </div>
             </div>

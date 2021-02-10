@@ -34,13 +34,13 @@ namespace MvcOnlineTicariOtomasyon.Controllers
 
 
         [HttpGet]
-        public ActionResult CariLogin()
+        public ActionResult CariLogin1()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult CariLogin(Cariler c)
+        public ActionResult CariLogin1(Cariler c)
         {
             var cariBilgi = context.Carilers.FirstOrDefault(x => x.CariMail == c.CariMail && x.CariSifre == c.CariSifre);
             if (cariBilgi != null)
@@ -55,5 +55,29 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             }
             
         }
+
+        [HttpGet]
+        public ActionResult PersonelLogin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult PersonelLogin(Admin admin)
+        {
+            var adminBilgi = context.Admins.FirstOrDefault(x => x.KullaniciAd == admin.KullaniciAd && x.Sifre == admin.Sifre);
+            if(adminBilgi != null)
+            {
+                FormsAuthentication.SetAuthCookie(adminBilgi.KullaniciAd, false);
+                Session["KullaniciAd"] = adminBilgi.KullaniciAd.ToString();
+                return RedirectToAction("Index", "Kategori");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+        }
+
+
     }
 }

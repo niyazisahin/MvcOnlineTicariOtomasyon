@@ -81,3 +81,7 @@ C:\Users\Niyazi Şahin\Desktop\OnlineTicariOtomasyon\MvcOnlineTicariOtomasyon\ob
 C:\Users\Niyazi Şahin\Desktop\OnlineTicariOtomasyon\MvcOnlineTicariOtomasyon\obj\Debug\MvcOnlineTicariOtomasyon.csproj.CopyComplete
 C:\Users\Niyazi Şahin\Desktop\OnlineTicariOtomasyon\MvcOnlineTicariOtomasyon\obj\Debug\MvcOnlineTicariOtomasyon.dll
 C:\Users\Niyazi Şahin\Desktop\OnlineTicariOtomasyon\MvcOnlineTicariOtomasyon\obj\Debug\MvcOnlineTicariOtomasyon.pdb
+C:\Users\Niyazi Şahin\Desktop\OnlineTicariOtomasyon\MvcOnlineTicariOtomasyon\bin\PagedList.dll
+C:\Users\Niyazi Şahin\Desktop\OnlineTicariOtomasyon\MvcOnlineTicariOtomasyon\bin\PagedList.Mvc.dll
+C:\Users\Niyazi Şahin\Desktop\OnlineTicariOtomasyon\MvcOnlineTicariOtomasyon\bin\PagedList.xml
+C:\Users\Niyazi Şahin\Desktop\OnlineTicariOtomasyon\MvcOnlineTicariOtomasyon\bin\PagedList.Mvc.xml

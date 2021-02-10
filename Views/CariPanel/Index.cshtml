@@ -1,20 +1,41 @@
-﻿@*@model MvcOnlineTicariOtomasyon.Models.Siniflar.Cariler*@
-
+﻿@*@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@model List<Cariler>*@
+@model MvcOnlineTicariOtomasyon.Models.Siniflar.Cariler
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_CariLayout.cshtml";
 }
 
-<h1>Index</h1>
-@*@using (Html.BeginForm("Index", "CariPanel", FormMethod.Post))
-{
-<table class="table table-bordered">
-    <tr>
-        <td><label>Mail Adresi : @HttpContext.Current.User.Identity.Name</label></td>
-        <td>@Html.TextBoxFor(x=>x.CariAd, new { @class = "form-control" } )</td>
-    </tr>
-</table>*@
+<br />
+<h1>Bilgileriniz</h1>
+<br />
 
+
+@using (Html.BeginForm("Index2", "CariPanel", FormMethod.Post))
+{
+<table class="table table-hover">
+    <tr>
+        <td>@Html.TextBoxFor(x => x.CariAd, new { @class = "form-control" })</td>
+    </tr>
+    <tr>
+        <td>@Html.TextBoxFor(x => x.CariSoyad, new { @class = "form-control" })</td>
+    </tr>
+    <tr>
+        <td>@Html.TextBoxFor(x => x.CariSehir, new { @class = "form-control" })</td>
+    </tr>
+    <tr>
+        <td>@Html.TextBoxFor(x => x.CariMail, new { @class = "form-control" })</td>
+    </tr>
+    <tr>
+        <td><button class="btn-info">Bilgileri Güncelle</button></td>
+    </tr>
+    
+
+
+
+</table>
+
+}
 
 
 

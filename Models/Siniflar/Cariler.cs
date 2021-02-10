@@ -38,7 +38,7 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
         public string CariMail { get; set; }
 
         [Display(Name = "Cari Şifre")]
-        [Column(TypeName = "Varchar")]
+        
         [StringLength(30, ErrorMessage = "En fazla 30 karakter kullanabilirsiniz.")]
         [Required(ErrorMessage = "Sifre Boş Bırakılamaz")]
         public string CariSifre { get; set; }
