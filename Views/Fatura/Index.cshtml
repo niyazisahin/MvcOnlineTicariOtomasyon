@@ -20,6 +20,8 @@
         <td>Toplam Tutar</td>
         <td>Güncelle</td>
         <td>Detay</td>
+        <td>Popup liste</td>
+        <td>Yeni Kalem</td>
     </tr>
     @foreach (var f in Model)
     {
@@ -34,6 +36,8 @@
             <td>@f.ToplamTutar</td>
             <td><a href="/Fatura/FaturaGuncelle/@f.FaturaId" class="btn btn-warning">Güncelle</a></td>
             <td><a href="/Fatura/FaturaDetay/@f.FaturaId" class="btn btn-info">Detay</a></td>
+            <td><a href="/Fatura/FaturaDetay/@f.FaturaId" class="btn btn-primary">Popup</a></td>
+            <td><a href="/Fatura/FaturaDetay/@f.FaturaId" class="btn btn-success">Kalem</a></td>
         </tr>
 
     }
