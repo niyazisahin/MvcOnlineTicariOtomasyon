@@ -45,7 +45,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             var cariBilgi = context.Carilers.FirstOrDefault(x => x.CariMail == c.CariMail && x.CariSifre == c.CariSifre);
             if (cariBilgi != null)
             {
-                FormsAuthentication.SetAuthCookie(cariBilgi.CariMail, false);
+                FormsAuthentication.SetAuthCookie(cariBilgi.CariMail, false); 
                 Session["CariMail"] = cariBilgi.CariMail.ToString();
                 return RedirectToAction("Index", "CariPanel");  
             }

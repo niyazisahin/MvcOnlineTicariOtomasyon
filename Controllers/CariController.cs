@@ -5,16 +5,16 @@ using System.Web;
 using System.Web.Mvc;
 using MvcOnlineTicariOtomasyon.Models.Siniflar;
 
-namespace MvcOnlineTicariOtomasyon.Controllers
+namespace MvcOnlineTicariOtomasyon.Controllers 
 {
     public class CariController : Controller
     {
         Context context = new Context();
-        // GET: Cari
-        public ActionResult Index()
+        // GET: Cari 
+        public ActionResult Index() 
         {
             var cariler = context.Carilers.ToList();
-
+             
             return View(cariler);
         }
         
