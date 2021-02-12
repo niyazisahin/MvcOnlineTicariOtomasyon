@@ -6,7 +6,7 @@
 <br />
 <h2>PersonelGuncelle</h2>
 <br />
-@using (Html.BeginForm("PersonelGuncelle", "Personel", FormMethod.Post))
+@using (Html.BeginForm("PersonelGuncelle", "Personel", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 
     @Html.HiddenFor(x => x.PersonelId)
@@ -23,11 +23,13 @@
     <br />
     @Html.LabelFor(x => x.Departman)
     <br />
-    @Html.DropDownListFor(x => x.DepartmanId, (List<SelectListItem>)ViewBag.deger1, new { @class = "form-control" })
+    @Html.DropDownListFor(x => x.DepartmanId, (List<SelectListItem>)ViewBag.deger2, new { @class = "form-control" })
     <br />
     @Html.LabelFor(x => x.PersonelGorsel)
     <br />
-    @Html.TextBoxFor(x => x.PersonelGorsel, new { @class = "form-control" })
+    @*@Html.TextBoxFor(x => x.PersonelGorsel, new { @class = "form-control" })*@
+    <input type="file" name="PersonelGorsel" value="@Model.PersonelGorsel" />
+    <br />
     <br />
 
     <button class="btn btn-info">Kaydet</button>

@@ -3,9 +3,11 @@
     ViewBag.Title = "YeniPersonelEkle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<script src="~/Scripts/jquery-3.4.1.js"></script>
 <br />
 <h2>YeniPersonelEkle</h2>
 <br />
+@using(Html.BeginForm("YeniPersonelEkle", "Personel", FormMethod.Post, new { enctype = "multipart/form-data" })) { 
 <form class="form-group" method="post">
     @Html.LabelFor(x => x.PersonelAd)
     <br />
@@ -21,8 +23,15 @@
     <br />
     @Html.LabelFor(x => x.PersonelGorsel)
     <br />
-    @Html.TextBoxFor(x => x.PersonelGorsel, new { @class = "form-control" })
+    @*@Html.TextBoxFor(x => x.PersonelGorsel, new { @class = "form-control" })*@
+    <input type="file" name="PersonelGorsel" value="" />
     <br />
-    <button class="btn btn-info">Kaydet</button>
+    <br />
+    <button class="btn btn-info" id="BtnKaydet">Kaydet</button>
+    <script>
+        $('#BtnKaydet').click(function () {
+            alert("Personel Ekleme Başarılı Bir Şekilde Tamamlandı.")
+        });
+    </script>
 </form>
-
+}
