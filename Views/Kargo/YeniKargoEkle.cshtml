@@ -1,0 +1,37 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.KargoDetay
+@{
+    ViewBag.Title = "YeniKargoEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yeni Kargo Ekleme Sayfası</h2>
+<br />
+<form class="form-group" method="post">
+
+    @Html.LabelFor(x => x.KargoTakipKodu)
+    <br />
+    <input type="text" name="KargoTakipKodu" value="@ViewBag.takipKod" readonly class="form-control" />
+    <br />
+    @Html.LabelFor(x => x.GonderenPersonel)
+    <br />
+    @Html.DropDownListFor(x => x.GonderenPersonel, (List<SelectListItem>)ViewBag.deger3, new { @class = "form-control" })
+    @*@Html.ValidationMessageFor(x => x.UrunAd, "", new { @style = "color:red" })*@
+    <br />
+    @Html.LabelFor(x => x.AliciCari)
+    <br />
+    @Html.DropDownListFor(x => x.AliciCari, (List<SelectListItem>)ViewBag.deger2, new { @class = "form-control" })
+    @*@Html.ValidationMessageFor(x => x.Marka, "", new { @style = "color:red" })*@
+    <br />
+    @Html.LabelFor(x => x.Aciklama)
+    <br />
+    @Html.TextAreaFor(x => x.Aciklama, new { @class = "form-control" })
+
+    <br />
+    @*@Html.LabelFor(x => x.KargoTakipKodu)
+    <br />
+    @Html.TextBoxFor(x => x.KargoTakipKodu, new { @class = "form-control" })*@
+    <br />
+    <button class="btn btn-info">Ekle</button>
+
+</form>
+

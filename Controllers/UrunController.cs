@@ -138,8 +138,9 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         public ActionResult SatisYap(SatisHareket s)
         {
             var urun = context.Uruns.Find(s.UrunID);
-            context.SatisHarekets.Add(s);
             s.Tarih = DateTime.Parse(DateTime.Now.ToShortDateString());
+            context.SatisHarekets.Add(s);
+            
             context.SaveChanges();
             return RedirectToAction("Index");
             
