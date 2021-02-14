@@ -87,3 +87,4 @@ C:\Users\Niyazi Şahin\Desktop\OnlineTicariOtomasyon\MvcOnlineTicariOtomasyon\bi
 C:\Users\Niyazi Şahin\Desktop\OnlineTicariOtomasyon\MvcOnlineTicariOtomasyon\bin\PagedList.Mvc.xml
 C:\Users\Niyazi Şahin\Desktop\OnlineTicariOtomasyon\MvcOnlineTicariOtomasyon\obj\Debug\MvcOnlineTicariOtomasyon.Migrations.KargoTakip.resources
 C:\Users\Niyazi Şahin\Desktop\OnlineTicariOtomasyon\MvcOnlineTicariOtomasyon\obj\Debug\MvcOnlineTicariOtomasyon.csproj.GenerateResource.cache
+C:\Users\Niyazi Şahin\Desktop\OnlineTicariOtomasyon\MvcOnlineTicariOtomasyon\bin\QRCoder.dll
