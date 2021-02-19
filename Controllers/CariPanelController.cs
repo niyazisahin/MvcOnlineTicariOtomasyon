@@ -55,6 +55,27 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             return View(satislar);
         }
 
+        public ActionResult GelenMesajlar()
+        {
+            var degerler = context.Mesajlars.ToList();
+            return View(degerler);
+        }
+
+        //[HttpGet]
+        //public ActionResult YeniMesaj()
+        //{
+        //    return View();
+        //}
+
+        //[HttpGet]
+        //public ActionResult YeniMesaj()
+        //{
+        //    return View();
+        //}
+
+
+
+
 
 
 
