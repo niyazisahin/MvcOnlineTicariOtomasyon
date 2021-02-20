@@ -57,8 +57,27 @@ namespace MvcOnlineTicariOtomasyon.Controllers
 
         public ActionResult GelenMesajlar()
         {
-            var degerler = context.Mesajlars.ToList();
+            var mail = (string)Session["CariMail"];
+            var degerler = context.Mesajlars.Where(x=>x.Alici == mail).ToList();
+            var mesajSayisi = context.Mesajlars.Where(x => x.Alici == mail).Count();
+            ViewBag.mesajSayisi = mesajSayisi;
+            var gonderilenMesajSayisi = context.Mesajlars.Where(x => x.Gonderen == mail).Count();
+            ViewBag.gonderilenMesajSayisi = gonderilenMesajSayisi;
+            
             return View(degerler);
+        }
+
+        public ActionResult GonderilenMesajlar()
+        {
+            var mail = (string)Session["CariMail"];
+            var degerler = context.Mesajlars.Where(x => x.Gonderen == mail).ToList();
+            var mesajSayisi = context.Mesajlars.Where(x => x.Alici == mail).Count();
+            ViewBag.mesajSayisi = mesajSayisi;
+            var gonderilenMesajSayisi = context.Mesajlars.Where(x => x.Gonderen == mail).Count();
+            ViewBag.gonderilenMesajSayisi = gonderilenMesajSayisi;
+
+            return View(degerler);
+            
         }
 
         //[HttpGet]
