@@ -1,7 +1,7 @@
-﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
-@model List<Mesajlar>
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Mesajlar
+
 @{
-    ViewBag.Title = "GonderilenMesajlar";
+    ViewBag.Title = "MesajDetay";
     Layout = "~/Views/Shared/_CariLayout.cshtml";
 }
 
@@ -33,7 +33,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Giden Kutusu</h1>
+                        <h1>Gelen Kutusu</h1>
                     </div>
 
                 </div>
@@ -127,104 +127,78 @@
                     <!-- /.card -->
                 </div>
                 <!-- /.col -->
+
                 <div class="col-md-9">
                     <div class="card card-primary card-outline">
                         <div class="card-header">
-                            <h3 class="card-title">Giden Kutusu</h3>
+                            <h3 class="card-title">Gelen Mesaj</h3>
 
                             <div class="card-tools">
-                                <div class="input-group input-group-sm">
-                                    <input type="text" class="form-control" placeholder="Mail Ara">
-                                    <div class="input-group-append">
-                                        <div class="btn btn-primary">
-                                            <i class="fas fa-search"></i>
-                                        </div>
-                                    </div>
-                                </div>
+                                <a href="#" class="btn btn-tool" data-toggle="tooltip" title="Previous"><i class="fas fa-chevron-left"></i></a>
+                                <a href="#" class="btn btn-tool" data-toggle="tooltip" title="Next"><i class="fas fa-chevron-right"></i></a>
                             </div>
-                            <!-- /.card-tools -->
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body p-0">
-                            <div class="mailbox-controls">
-                                <!-- Check all button -->
-                                <button type="button" class="btn btn-default btn-sm checkbox-toggle">
-                                    <i class="far fa-square"></i>
-                                </button>
+                            <div class="mailbox-read-info">
+                                <h5>@Model.Konu</h5>
+                                <br />
+                                <h6>
+                                    Kimden: @Model.Gonderen
+                                    <span class="mailbox-read-time float-right">@Model.Tarih</span>
+                                </h6>
+                            </div>
+                            <!-- /.mailbox-read-info -->
+                            <div class="mailbox-controls with-border text-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
-                                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
-                                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
+                                    <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Delete">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Reply">
+                                        <i class="fas fa-reply"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Forward">
+                                        <i class="fas fa-share"></i>
+                                    </button>
                                 </div>
                                 <!-- /.btn-group -->
-                                <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
-                                <div class="float-right">
-                                    1-50/200
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></button>
-                                        <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></button>
-                                    </div>
-                                    <!-- /.btn-group -->
-                                </div>
-                                <!-- /.float-right -->
+                                <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Print">
+                                    <i class="fas fa-print"></i>
+                                </button>
                             </div>
-                            <div class="table-responsive mailbox-messages">
-                                <table class="table table-hover table-striped">
-                                    <tbody>
-                                        @foreach (var m in Model)
-                                        {
-                                            <tr>
-                                                <td>
-                                                    <div class="icheck-primary">
-                                                        <input type="checkbox" value="" id="check1">
-                                                        <label for="check1"></label>
-                                                    </div>
-                                                </td>
-                                                <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
-                                                <td class="mailbox-name"><a href="/CariPanel/MesajDetay/@m.MesajId">@m.Alici</a></td>
-                                                <td class="mailbox-subject">
-                                                    <b>@m.Konu</b> - @m.MesajIcerik.Substring(0, 15)...
-                                                </td>
-                                                <td class="mailbox-attachment"></td>
-                                                <td class="mailbox-date">@m.Tarih</td>
-                                            </tr>
-                                        }
+                            <!-- /.mailbox-controls -->
+                            <div class="mailbox-read-message">
+                                <p>@Model.MesajIcerik.Substring(0,10) ...</p>
 
-
-                                    </tbody>
-                                </table>
-                                <!-- /.table -->
+                                <p>
+                                    @Model.MesajIcerik
+                                </p>
+                                <br />
+                                <p>@Model.Gonderen</p>
                             </div>
-                            <!-- /.mail-box-messages -->
+                            <!-- /.mailbox-read-message -->
                         </div>
                         <!-- /.card-body -->
-                        <div class="card-footer p-0">
-                            <div class="mailbox-controls">
-                                <!-- Check all button -->
-                                <button type="button" class="btn btn-default btn-sm checkbox-toggle">
-                                    <i class="far fa-square"></i>
-                                </button>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
-                                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
-                                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
-                                </div>
-                                <!-- /.btn-group -->
-                                <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
-                                <div class="float-right">
-                                    1-50/200
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></button>
-                                        <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></button>
-                                    </div>
-                                    <!-- /.btn-group -->
-                                </div>
-                                <!-- /.float-right -->
+                        <!-- /.card-footer -->
+                        <div class="card-footer">
+                            <div class="float-right">
+                                <button type="button" class="btn btn-default"><i class="fas fa-reply"></i> Reply</button>
+                                <button type="button" class="btn btn-default"><i class="fas fa-share"></i> Forward</button>
                             </div>
+                            <button type="button" class="btn btn-default"><i class="far fa-trash-alt"></i> Delete</button>
+                            <button type="button" class="btn btn-default"><i class="fas fa-print"></i> Print</button>
                         </div>
+                        <!-- /.card-footer -->
                     </div>
                     <!-- /.card -->
                 </div>
+
+
+                <!--<div class="col-md-9">
+        
+    </div>-->
+                <!-- /.card -->
+                <!--</div>-->
                 <!-- /.col -->
             </div>
             <!-- /.row -->
@@ -241,46 +215,47 @@
     <script src="~/Themes/AdminLTE-3.0.4/dist/js/adminlte.min.js"></script>
     <!-- Page Script -->
     <script>
-        $(function () {
-            //Enable check and uncheck all functionality
-            $('.checkbox-toggle').click(function () {
-                var clicks = $(this).data('clicks')
-                if (clicks) {
-                    //Uncheck all checkboxes
-                    $('.mailbox-messages input[type=\'checkbox\']').prop('checked', false)
-                    $('.checkbox-toggle .far.fa-check-square').removeClass('fa-check-square').addClass('fa-square')
-                } else {
-                    //Check all checkboxes
-                    $('.mailbox-messages input[type=\'checkbox\']').prop('checked', true)
-                    $('.checkbox-toggle .far.fa-square').removeClass('fa-square').addClass('fa-check-square')
-                }
-                $(this).data('clicks', !clicks)
-            })
+$(function () {
+    //Enable check and uncheck all functionality
+    $('.checkbox-toggle').click(function () {
+      var clicks = $(this).data('clicks')
+      if (clicks) {
+        //Uncheck all checkboxes
+        $('.mailbox-messages input[type=\'checkbox\']').prop('checked', false)
+        $('.checkbox-toggle .far.fa-check-square').removeClass('fa-check-square').addClass('fa-square')
+      } else {
+        //Check all checkboxes
+        $('.mailbox-messages input[type=\'checkbox\']').prop('checked', true)
+        $('.checkbox-toggle .far.fa-square').removeClass('fa-square').addClass('fa-check-square')
+      }
+      $(this).data('clicks', !clicks)
+    })
 
-            //Handle starring for glyphicon and font awesome
-            $('.mailbox-star').click(function (e) {
-                e.preventDefault()
-                //detect type
-                var $this = $(this).find('a > i')
-                var glyph = $this.hasClass('glyphicon')
-                var fa = $this.hasClass('fa')
+    //Handle starring for glyphicon and font awesome
+    $('.mailbox-star').click(function (e) {
+      e.preventDefault()
+      //detect type
+      var $this = $(this).find('a > i')
+      var glyph = $this.hasClass('glyphicon')
+      var fa    = $this.hasClass('fa')
 
-                //Switch states
-                if (glyph) {
-                    $this.toggleClass('glyphicon-star')
-                    $this.toggleClass('glyphicon-star-empty')
-                }
+      //Switch states
+      if (glyph) {
+        $this.toggleClass('glyphicon-star')
+        $this.toggleClass('glyphicon-star-empty')
+      }
 
-                if (fa) {
-                    $this.toggleClass('fa-star')
-                    $this.toggleClass('fa-star-o')
-                }
-            })
-        })</script>
+      if (fa) {
+        $this.toggleClass('fa-star')
+        $this.toggleClass('fa-star-o')
+      }
+    })
+  })</script>
     <!-- AdminLTE for demo purposes -->
     <script src="~/Themes/AdminLTE-3.0.4/dist/js/demo.js"></script>
 </body>
 </html>
+
 
 
 

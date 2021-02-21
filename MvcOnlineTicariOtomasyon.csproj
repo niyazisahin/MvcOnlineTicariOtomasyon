@@ -2945,6 +2945,8 @@
     <Content Include="Views\Grafik\Index7.cshtml" />
     <Content Include="Views\CariPanel\GelenMesajlar.cshtml" />
     <Content Include="Views\CariPanel\GonderilenMesajlar.cshtml" />
+    <Content Include="Views\CariPanel\MesajDetay.cshtml" />
+    <Content Include="Views\CariPanel\YeniMesaj.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

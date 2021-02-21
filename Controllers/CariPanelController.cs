@@ -80,17 +80,39 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             
         }
 
-        //[HttpGet]
-        //public ActionResult YeniMesaj()
-        //{
-        //    return View();
-        //}
+        public ActionResult MesajDetay(int id)
+        {
+            var mail = (string)Session["CariMail"];
+            var degerler = context.Mesajlars.Where(x => x.MesajId == id).ToList().FirstOrDefault();
+            var mesajSayisi = context.Mesajlars.Where(x => x.Alici == mail).Count();
+            ViewBag.mesajSayisi = mesajSayisi;
+            var gonderilenMesajSayisi = context.Mesajlars.Where(x => x.Gonderen == mail).Count();
+            ViewBag.gonderilenMesajSayisi = gonderilenMesajSayisi;
 
-        //[HttpGet]
-        //public ActionResult YeniMesaj()
-        //{
-        //    return View();
-        //}
+            return View(degerler);
+        }
+
+        [HttpGet]
+        public ActionResult YeniMesaj()
+        {
+            var mail = (string)Session["CariMail"];
+            var mesajSayisi = context.Mesajlars.Where(x => x.Alici == mail).Count();
+            ViewBag.mesajSayisi = mesajSayisi;
+            var gonderilenMesajSayisi = context.Mesajlars.Where(x => x.Gonderen == mail).Count();
+            ViewBag.gonderilenMesajSayisi = gonderilenMesajSayisi;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult YeniMesaj(Mesajlar mesaj)
+        {
+            var mail = (string)Session["CariMail"];
+            mesaj.Tarih = DateTime.Parse(DateTime.Now.ToShortDateString());
+            mesaj.Gonderen = mail; 
+            context.Mesajlars.Add(mesaj);
+            context.SaveChanges();
+            return RedirectToAction("GelenMesajlar");
+        }
 
 
 
