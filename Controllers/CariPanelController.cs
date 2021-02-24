@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using MvcOnlineTicariOtomasyon.Models.Siniflar;
+
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
     public class CariPanelController : Controller
     {
         Context context = new Context();
-
+        
         // GET: CariPanel
-
+        
         [Authorize]
         public ActionResult Index()
         {
@@ -46,15 +49,18 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             
         }
 
+        [Authorize]
         public ActionResult SiparisGoster()
         {
             var mail = (string)Session["CariMail"];
             var cariId = context.Carilers.Where(x => x.CariMail == mail.ToString()).Select(y => y.CariId).FirstOrDefault();
             //var cari = context.Carilers.Find(cariId);
             var satislar = context.SatisHarekets.Where(x => x.CariId == cariId).ToList();
+
             return View(satislar);
         }
 
+        [Authorize]
         public ActionResult GelenMesajlar()
         {
             var mail = (string)Session["CariMail"];
@@ -67,6 +73,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             return View(degerler);
         }
 
+        [Authorize]
         public ActionResult GonderilenMesajlar()
         {
             var mail = (string)Session["CariMail"];
@@ -80,6 +87,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             
         }
 
+        [Authorize]
         public ActionResult MesajDetay(int id)
         {
             var mail = (string)Session["CariMail"];
@@ -92,6 +100,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             return View(degerler);
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult YeniMesaj()
         {
@@ -103,6 +112,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult YeniMesaj(Mesajlar mesaj)
         {
@@ -112,6 +122,37 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             context.Mesajlars.Add(mesaj);
             context.SaveChanges();
             return RedirectToAction("GelenMesajlar");
+        }
+
+        [Authorize]
+        public ActionResult KargoTakip(string p)
+        {
+            dynamic model = new ExpandoObject();
+            model.kargoDetays = context.KargoDetays;
+            model.kargoTakips = context.KargoTakips;
+
+            var mail = (string)Session["CariMail"];
+            var kargolar = from x in context.KargoDetays select x;
+
+            if (!string.IsNullOrEmpty(p))
+            {
+                kargolar = kargolar.Where(y => y.KargoTakipKodu.Contains(p));
+            }
+            var cariAd = context.Carilers.Where(x => x.CariMail == mail.ToString()).Select(y => y.CariAd + " " + y.CariSoyad).FirstOrDefault();
+            var kargoTakipKodu = kargolar.Select(x => x.KargoTakipKodu).FirstOrDefault();
+            model.kargoDetays = kargolar.Where(x => x.AliciCari == cariAd).ToList();
+            model.kargoTakips = context.KargoTakips.Where(x => x.KargoTakipKodu == kargoTakipKodu).ToList();
+            ViewBag.p = p;
+
+            return View(model);
+
+        }
+
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("Index", "Login");
         }
 
 

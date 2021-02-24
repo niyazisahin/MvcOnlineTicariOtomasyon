@@ -16,6 +16,7 @@
         <td>Toplam Tutar</td>
         <td>Personel</td>
         <td>Urun</td>
+
     </tr>
     @foreach (var s in Model)
     {
@@ -26,6 +27,7 @@
             <td>@s.Tutar</td>
             <td>@s.Personel.PersonelAd @s.Personel.PersonelSoyad</td>
             <td>@s.Urun.UrunAd</td>
+
         </tr>
     }
 </table>

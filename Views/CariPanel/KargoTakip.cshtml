@@ -1,0 +1,90 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@model dynamic
+
+@{
+    ViewBag.Title = "KargoTakip";
+    Layout = "~/Views/Shared/_CariLayout.cshtml";
+}
+<br />
+<h3>Kargo Özeti</h3>
+<br />
+
+@using (Html.BeginForm("KargoTakip", "CariPanel", FormMethod.Get))
+{
+    <p>
+        Kargo Takip Kodu : @Html.TextBox("p")
+        <input type="submit" value="Ara"/>
+    </p>
+
+}
+<br />
+<table class="table table-bordered" , style="margin-top:20px">
+    <tr>
+        <td><h5>Gönderen</h5></td>
+        <td><h5>Alıcı</h5></td>
+        <td><h5>Açıklama</h5></td>
+        <td><h5>Tarih</h5></td>
+        <td><h5>Takip Kodu</h5></td>
+        @if (!string.IsNullOrEmpty(ViewBag.p))
+        {
+            <td><h5>Detay</h5></td>
+
+        }
+    </tr>
+    @foreach (KargoDetay d in Model.kargoDetays)
+    {
+<tr>
+    <td>@d.GonderenPersonel</td>
+    <td>@d.AliciCari</td>
+    <td>@d.Aciklama</td>
+    <td>@d.Tarih</td>
+    <td>@d.KargoTakipKodu</td>
+    @{
+        if (!string.IsNullOrEmpty(ViewBag.p))
+        {
+            <td>
+                <button class="btn btn-dark" style="color:white;" data-toggle="modal" data-target="#Modal1">Kargo</button>
+            </td>
+        }
+    }
+
+</tr>
+    }
+
+
+</table>
+<br />
+<h3>Kargonuzun durumunu sorgulayabilmek için kargo takip kodunuzu arama yerine giriniz.</h3>
+
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">
+                    PopUp Dialog Ekranı
+                </h2>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover">
+                    <tr>
+                        <td>Açıklama</td>
+                        <td>Tarih</td>
+
+                    </tr>
+                    @foreach (KargoTakip f in Model.kargoTakips)
+                    {
+                        <tr>
+                            <td>@f.Aciklama</td>
+                            <td>@f.Tarih</td>
+                            @*<td>@f.Saat</td>
+                                <td>@f.ToplamTutar</td>*@
+                        </tr>
+                    }
+                </table>
+                <button type="button" data-dismiss="modal" class="btn btn-danger">Kapat</button>
+
+            </div>
+
+        </div>
+    </div>
+</div>
