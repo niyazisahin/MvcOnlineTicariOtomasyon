@@ -23,14 +23,32 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             var degerler = context.Carilers.FirstOrDefault(x => x.CariMail == mail);
 
             var cariId = context.Carilers.Where(x => x.CariMail == mail).Select(y => y.CariId).FirstOrDefault();
+            var carix = context.SatisHarekets.Find(cariId);
 
-            var toplamAlis = context.SatisHarekets.Count(x => x.CariId == cariId);
-            var toplamTutar = context.SatisHarekets.Where(x => x.CariId == cariId).Sum(y => y.Tutar);
-            var toplamUrunSayisi = context.SatisHarekets.Where(x => x.CariId == cariId).Sum(y => y.Adet);
+            var toplamAlis = 0;
+            decimal toplamTutar = 0;
+            var toplamUrunSayisi = 0;
 
-            ViewBag.toplamUrunSayisi = toplamUrunSayisi;
-            ViewBag.toplamSatisTutari = toplamTutar;
-            ViewBag.toplamAlis = toplamAlis;
+            if (carix != null)
+            {
+                         toplamAlis = context.SatisHarekets.Count(x => x.CariId == cariId);
+                         toplamTutar = context.SatisHarekets.Where(x => x.CariId == cariId).Sum(y => y.Tutar);
+                         toplamUrunSayisi = context.SatisHarekets.Where(x => x.CariId == cariId).Sum(y => y.Adet);
+                
+                        
+            }
+            else
+            {
+                 toplamAlis = 0;
+                 toplamTutar = 0;
+                 toplamUrunSayisi = 0;
+            }
+
+                 ViewBag.toplamUrunSayisi = toplamUrunSayisi;
+                 ViewBag.toplamSatisTutari = toplamTutar;
+                 ViewBag.toplamAlis = toplamAlis;
+
+
 
             var mesajlar = context.Mesajlars.Where(x => x.Alici == mail.ToString()).ToList();
 
