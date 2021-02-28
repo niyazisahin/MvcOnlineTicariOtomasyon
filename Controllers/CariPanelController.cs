@@ -60,20 +60,6 @@ namespace MvcOnlineTicariOtomasyon.Controllers
 
         }
 
-        public ActionResult Index2(Cariler c)
-        {
-            var mail = (string)Session["CariMail"];
-            var cariId = context.Carilers.Where(x => x.CariMail == mail.ToString()).Select(y => y.CariId).FirstOrDefault();
-            var cari = context.Carilers.Find(cariId);
-            cari.CariAd = c.CariAd;
-            cari.CariSoyad = c.CariSoyad;
-            cari.CariSehir = c.CariSehir;
-            context.SaveChanges();
-            return RedirectToAction("Index");
-
-
-        }
-
         [Authorize]
         public ActionResult SiparisGoster()
         {
@@ -179,20 +165,18 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             Session.Abandon();
             return RedirectToAction("Index", "Login");
         }
-
-        public PartialViewResult BilgiGuncelle()
-        {
-            var mail = (string)Session["CariMail"];
-            var cariler = context.Carilers.Where(x => x.CariMail == mail).FirstOrDefault();
-            return PartialView("BilgiGuncelle", cariler);
-        }
-
         public PartialViewResult DuyuruPartial()
         {
             var mail = (string)Session["CariMail"];
             var mesajlar = context.Mesajlars.Where(x => x.Gonderen == "ADMIN").ToList();
 
             return PartialView(mesajlar);
+        }
+        public PartialViewResult BilgiGuncelle()
+        {
+            var mail = (string)Session["CariMail"];
+            var cariler = context.Carilers.Where(x => x.CariMail == mail).FirstOrDefault();
+            return PartialView("BilgiGuncelle", cariler);
         }
 
         public ActionResult BilgiGuncelle2(Cariler cari)

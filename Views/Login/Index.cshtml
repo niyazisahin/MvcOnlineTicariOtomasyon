@@ -98,7 +98,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <span class="fa fa-lock"></span>
                     <div class="clear"></div>
                     <div class="login-agileits-top">
-                        @using (Html.BeginForm("CariLogin1", "Login", FormMethod.Post))
+                        @using (Html.BeginForm("CariLogin", "Login", FormMethod.Post))
                         {
 
                             <input type="text" class="name" name="CariMail" Placeholder="Mail Adresi" required="" />
@@ -136,7 +136,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
     <div class="pop-up">
 
-        @Html.Action("Partial1", "Login")
+        @Html.Action("KayitOlPartial", "Login")
 
     </div>
     <script type="text/javascript" src="~/Themes/weblogin/js/jquery-2.1.4.min.js"></script>

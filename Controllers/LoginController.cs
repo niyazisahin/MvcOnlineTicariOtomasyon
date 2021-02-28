@@ -5,6 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using MvcOnlineTicariOtomasyon.Models.Siniflar;
 using System.Web.Security;
+using System.Net.Mail;
+using System.Net;
+using System.Text;
+using Limilabs.Mail.Fluent;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
@@ -17,30 +21,61 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             return View();
         }
 
+
+        public static void MailGonder(string mesaj, string alici)
+        {
+            var kimden = new MailAddress("niyazisahin3800@gmail.com");
+            var kime = new MailAddress(alici);
+            const string konu = "Online TicariOtomasyon";
+            using (var smtp = new SmtpClient 
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(kimden.Address, "Nsniyazi32@")
+            })
+            {
+                using (var message = new MailMessage(kimden, kime) { Subject = konu, Body = mesaj })
+                {
+                    smtp.Send(message);
+                }
+            }
+        }
+
         [HttpGet]
-        public PartialViewResult Partial1()
+        public PartialViewResult KayitOlPartial()
         {
             return PartialView();
         }
 
         [HttpPost]
-        public PartialViewResult Partial1(Cariler c)
+        public PartialViewResult KayitOlPartial(Cariler c)
         {
             context.Carilers.Add(c);
             context.SaveChanges();
+            var kontrol = context.Carilers.Find(c.CariId);
+            if (kontrol != null)
+            {
+                var body = new StringBuilder();
+                body.AppendLine("Ad & Soyad: " + kontrol.CariAd + kontrol.CariSoyad);
+                body.AppendLine("E-Mail Adresi: " + kontrol.CariMail);
+                body.AppendLine("Konu: Deneme Mesajı");
+                body.AppendLine("Mesaj: Sitemize Kayıt Olduüunuz İçin Teşekkürler. Bu Bir Deneme Mesajıdır. ");
+                MailGonder(body.ToString(), kontrol.CariMail);
+            }
             return PartialView();
         }
 
-
-
         [HttpGet]
-        public ActionResult CariLogin1()
+        public ActionResult CariLogin()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult CariLogin1(Cariler c)
+        public ActionResult CariLogin(Cariler c)
         {
             var cariBilgi = context.Carilers.FirstOrDefault(x => x.CariMail == c.CariMail && x.CariSifre == c.CariSifre);
             if (cariBilgi != null)
