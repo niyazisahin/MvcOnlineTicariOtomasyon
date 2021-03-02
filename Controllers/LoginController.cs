@@ -12,6 +12,7 @@ using Limilabs.Mail.Fluent;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         Context context = new Context();
