@@ -176,6 +176,7 @@
     <Compile Include="Models\Siniflar\Context.cs" />
     <Compile Include="Models\Siniflar\Departman.cs" />
     <Compile Include="Models\Siniflar\Detay.cs" />
+    <Compile Include="Models\Siniflar\DinamikFaturalarClass.cs" />
     <Compile Include="Models\Siniflar\DropDownListClass.cs" />
     <Compile Include="Models\Siniflar\Fatura.cs" />
     <Compile Include="Models\Siniflar\FaturaKalem.cs" />
@@ -192,6 +193,7 @@
     <Compile Include="Models\Siniflar\Urun.cs" />
     <Compile Include="Models\Siniflar\Yapilacaklar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role\AdminRoleProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="QRCoder.dll" />
@@ -2903,6 +2905,7 @@
     <Content Include="Views\CariPanel\DuyuruPartial.cshtml" />
     <Content Include="Views\Error\Page404.cshtml" />
     <Content Include="Views\Kategori\DropDownListKategoriUrun.cshtml" />
+    <Content Include="Views\Fatura\DinamikFaturalar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

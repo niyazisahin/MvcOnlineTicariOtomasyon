@@ -58,7 +58,7 @@
                         </a>
                         <a class="nav-link" href="/Departman/Index">
                             <div class="sb-nav-link-icon"><i class="fas fa-sitemap"></i></div>
-                            Depatmanlar
+                            Departmanlar
                         </a>
                         <a class="nav-link" href="/Cari/Index">
                             <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
@@ -85,9 +85,10 @@
                                 </a>
                                 <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                                     <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="/Grafik/Index5">Pie Grafik</a>
-                                    <a class="nav-link" href="/Grafik/Index6">Line Grafik</a>
-                                    <a class="nav-link" href="/Grafik/Index7">Column Grafik</a></nav>
+                                        <a class="nav-link" href="/Grafik/Index5">Pie Grafik</a>
+                                        <a class="nav-link" href="/Grafik/Index6">Line Grafik</a>
+                                        <a class="nav-link" href="/Grafik/Index7">Column Grafik</a>
+                                    </nav>
                                 </div>
                                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
                                     Hata Sayfaları
@@ -106,6 +107,10 @@
                         <a class="nav-link" href="/Fatura/Index">
                             <div class="sb-nav-link-icon"><i class="fas fa-list-ol"></i></div>
                             Faturalar
+                        </a>
+                        <a class="nav-link" href="/Fatura/DinamikFaturalar">
+                            <div class="sb-nav-link-icon"><i class="fas fa-list-ol"></i></div>
+                            Dinamik Faturalar
                         </a>
                         <a class="nav-link" href="/Kargo/Index">
                             <div class="sb-nav-link-icon"><i class="fas fa-list-ol"></i></div>
@@ -131,10 +136,13 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-camera-retro"></i></div>
                             Galeri
                         </a>
-                        <a class="nav-link" href="/UrunDetay/Index">
-                            <div class="sb-nav-link-icon"><i class="fas fa-calculator"></i></div>
-                            Ürün Detay
-                        </a>
+                        @if (User.IsInRole("A"))
+                        {
+                            <a class="nav-link" href="/UrunDetay/Index">
+                                <div class="sb-nav-link-icon"><i class="fas fa-calculator"></i></div>
+                                Ürün Detay
+                            </a>
+                        }
                         <a class="nav-link" href="/Istatistik/Tablolar">
                             <div class="sb-nav-link-icon"><i class="fas fa-signal"></i></div>
                             Tablolar
