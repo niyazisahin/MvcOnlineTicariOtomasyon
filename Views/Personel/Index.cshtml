@@ -4,35 +4,43 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<br />
-<h2>Personel Sayfası</h2>
-<br />
-<table class="table table-striped">
-    <tr>
-        <td>Personel ID</td>
-        <td>Ad</td>
-        <td>Soyad</td>
-        <td>Departman</td>
-        <td>Görsel</td>
-        <td>Sil</td>
-        <td>Güncelle</td>
-        <td>Detay</td>
 
-    </tr>
-    @foreach (var p in Model)
-    {
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/style/style.css" rel="stylesheet" />
+</head>
+<body>
+
+    <br />
+    <h2>Personel Sayfası</h2>
+    <br />
+    <table class="table table-striped">
         <tr>
-            <td>@p.PersonelId</td>
-            <td>@p.PersonelAd</td>
-            <td>@p.PersonelSoyad</td>
-            <td>@p.Departman.DepartmanAd</td>
-            <td><img src="@p.PersonelGorsel" style="height:100px; width:100px;" /></td>
-            <td><a href="/Personel/PersonelSil/@p.PersonelId" class="btn btn-danger">Sil</a></td>
-            <td><a href="/Personel/PersonelGuncelle/@p.PersonelId" class="btn btn-warning">Güncelle</a></td>
-            <td><a href="/Departman/DepartmanPersonelSatis/@p.PersonelId" class="btn btn-success">Satışlar</a></td>
-        </tr>
-    }
-</table>
-<br />
-<a href="/Personel/YeniPersonelEkle" class="btn btn-primary">Yeni Personel Ekle</a>
+            <td>Personel ID</td>
+            <td>Ad</td>
+            <td>Soyad</td>
+            <td>Departman</td>
+            <td>Görsel</td>
+            <td>Sil</td>
+            <td>Güncelle</td>
+            <td>Detay</td>
 
+        </tr>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.PersonelId</td>
+                <td>@p.PersonelAd</td>
+                <td>@p.PersonelSoyad</td>
+                <td>@p.Departman.DepartmanAd</td>
+                <td><img src="@p.PersonelGorsel" style="height:100px; width:100px;" /></td>
+                <td><a href="/Personel/PersonelSil/@p.PersonelId" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Personel/PersonelGuncelle/@p.PersonelId" class="btn btn-warning">Güncelle</a></td>
+                <td><a href="/Departman/DepartmanPersonelSatis/@p.PersonelId" class="btn btn-success">Satışlar</a></td>
+            </tr>
+        }
+    </table>
+    <br />
+    <a href="/Personel/YeniPersonelEkle" class="button"><span>Yeni Personel Ekle</span></a>
+
+</body>

@@ -3,52 +3,59 @@
     ViewBag.Title = "SatisYap";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<br />
-<h2>Satış Yap</h2>
-<br />
-
-<form class="form-group" method="post">
-
-    @*@Html.LabelFor(x => x.Tarih)
-        @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })*@
-    
-    <br />
-    @Html.LabelFor(x => x.UrunID)
-
-<input type="text" name="UrunID" value="@ViewBag.deger1" class="form-control" readonly />
-    <br />
-    @Html.LabelFor(x => x.Cariler.CariAd)
-    @Html.DropDownListFor(x => x.CariId, (List<SelectListItem>)ViewBag.deger2, new { @class = "form-control" })
-    <br />
-    @Html.LabelFor(x => x.Personel)
-    @Html.DropDownListFor(x => x.PersonelId, (List<SelectListItem>)ViewBag.deger3, new { @class = "form-control" })
-    <br />
-    @Html.LabelFor(x => x.BirimFiyat)
-    <input type="text" name="BirimFiyat" value="@ViewBag.BirimFiyat" id="txtBirimFiyat" class="form-control" onkeyup="Cross();" />
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/style/style.css" rel="stylesheet" />
+</head>
+<body>
 
     <br />
-    @Html.LabelFor(x => x.Adet)
-    <input type="number" name="Adet" id="txtAdet" class="form-control" onchange="Cross();" min="1" />
-
-    <br />
-    @Html.LabelFor(x => x.Tutar)
-    <input type="text" name="Tutar" id="txtTutar" class="form-control" />
-
+    <h2>Satış Yap</h2>
     <br />
 
-    <button class="btn btn-info">Satış Yap</button>
+    <form class="form-group" method="post">
 
-    <script>
-        function Cross() {
-            var deger1 = document.getElementById("txtBirimFiyat").value;
-            var deger2 = document.getElementById("txtAdet").value;
-            var sonuc = parseInt(deger1) * parseInt(deger2);
-            if (!isNaN(sonuc)) {
-                document.getElementById("txtTutar").value = sonuc;
+        @*@Html.LabelFor(x => x.Tarih)
+            @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })*@
+
+        <br />
+        @Html.LabelFor(x => x.UrunID)
+
+        <input type="text" name="UrunID" value="@ViewBag.deger1" class="form-control" readonly />
+        <br />
+        @Html.LabelFor(x => x.Cariler.CariAd)
+        @Html.DropDownListFor(x => x.CariId, (List<SelectListItem>)ViewBag.deger2, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.Personel)
+        @Html.DropDownListFor(x => x.PersonelId, (List<SelectListItem>)ViewBag.deger3, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.BirimFiyat)
+        <input type="text" name="BirimFiyat" value="@ViewBag.BirimFiyat" id="txtBirimFiyat" class="form-control" onkeyup="Cross();" />
+
+        <br />
+        @Html.LabelFor(x => x.Adet)
+        <input type="number" name="Adet" id="txtAdet" class="form-control" onchange="Cross();" min="1" />
+
+        <br />
+        @Html.LabelFor(x => x.Tutar)
+        <input type="text" name="Tutar" id="txtTutar" class="form-control" />
+
+        <br />
+
+        <button class="button"><span>Satış Yap</span></button>
+
+        <script>
+            function Cross() {
+                var deger1 = document.getElementById("txtBirimFiyat").value;
+                var deger2 = document.getElementById("txtAdet").value;
+                var sonuc = parseInt(deger1) * parseInt(deger2);
+                if (!isNaN(sonuc)) {
+                    document.getElementById("txtTutar").value = sonuc;
+                }
+
             }
+        </script>
 
-        }
-    </script>
+    </form>
 
-</form>
-
+</body>

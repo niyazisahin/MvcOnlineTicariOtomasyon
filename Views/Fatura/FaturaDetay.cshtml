@@ -4,28 +4,36 @@
     ViewBag.Title = "FaturaDetay";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<br />
-<h2>Fatura Kalemler</h2>
-<br />
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/style/style.css" rel="stylesheet" />
+</head>
 
-<table class="table table-hover">
-    <tr>
-        <td>Fatura Kalem ID</td>
-        <td>Açıklama</td>
-        <td>Miktar</td>
-        <td>Birim Fiyat</td>
-        <td>Tutar</td>
-    </tr>
-    @foreach (var f in Model)
-    {
+<body>
+
+    <br />
+    <h2>Fatura Kalemler</h2>
+    <br />
+
+    <table class="table table-hover">
         <tr>
-            <td>@f.FaturaKalemId</td>
-            <td>@f.Aciklama</td>
-            <td>@f.Miktar</td>
-            <td>@f.BirimFiyat</td>
-            <td>@f.Tutar</td>
-            
+            <td>Fatura Kalem ID</td>
+            <td>Açıklama</td>
+            <td>Miktar</td>
+            <td>Birim Fiyat</td>
+            <td>Tutar</td>
         </tr>
-    }
-</table>
-<a href="/Fatura/YeniKalemEkle" class="btn btn-warning">Yeni Kalem Ekle</a>
+        @foreach (var f in Model)
+        {
+            <tr>
+                <td>@f.FaturaKalemId</td>
+                <td>@f.Aciklama</td>
+                <td>@f.Miktar</td>
+                <td>@f.BirimFiyat</td>
+                <td>@f.Tutar</td>
+
+            </tr>
+        }
+    </table>
+    <a href="/Fatura/YeniKalemEkle" class="button"><span>Yeni Kalem Ekle</span></a>
+</body>

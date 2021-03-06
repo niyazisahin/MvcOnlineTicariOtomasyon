@@ -26,11 +26,11 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
         public string PersonelSoyad { get; set; }
 
         [Column(TypeName = "Varchar")]
-        [StringLength(300, ErrorMessage = "En fazla 300 karakter kullanabilirsiniz")]
-
         [Display(Name = "Personel Görsel")]
         public string PersonelGorsel { get; set; }
         public ICollection<SatisHareket> SatisHarekets { get; set; }
+
+        [Required]
         public int DepartmanId { get; set; }
         public virtual Departman Departman { get; set; }
     }

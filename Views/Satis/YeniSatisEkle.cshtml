@@ -4,35 +4,41 @@
     ViewBag.Title = "YeniSatisEkle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<br />
-<h2>Yeni Satiş Ekleme Sayfası</h2>
-<br />
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/style/style.css" rel="stylesheet" />
+</head>
+<body>
 
-<form class="form-group" method="post">
-
-    @*@Html.LabelFor(x => x.Tarih)
-    @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })*@
     <br />
-    @Html.LabelFor(x => x.Urun)
-    @Html.DropDownListFor(x => x.UrunID, (List<SelectListItem>)ViewBag.deger1, new { @class = "form-control" })
-    <br />
-    @Html.LabelFor(x => x.Cariler.CariAd)
-    @Html.DropDownListFor(x => x.CariId, (List<SelectListItem>)ViewBag.deger2, new { @class = "form-control" })
-    <br />
-    @Html.LabelFor(x => x.Personel)
-    @Html.DropDownListFor(x => x.PersonelId, (List<SelectListItem>)ViewBag.deger3, new { @class = "form-control" })
-    <br />
-    @Html.LabelFor(x => x.BirimFiyat)
-    @Html.TextBoxFor(x => x.BirimFiyat, new { @class = "form-control" })
-    <br />
-    @Html.LabelFor(x => x.Adet)
-    @Html.TextBoxFor(x => x.Adet, new { @class = "form-control" })
-    <br />
-    @Html.LabelFor(x => x.Tutar)
-    @Html.TextBoxFor(x => x.Tutar, new { @class = "form-control" })
+    <h2>Yeni Satiş Ekleme Sayfası</h2>
     <br />
 
-    <button class="btn btn-info">Ekle</button>
+    <form class="form-group" method="post">
 
-</form>
+        @*@Html.LabelFor(x => x.Tarih)
+            @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })*@
+        <br />
+        @Html.LabelFor(x => x.Urun)
+        @Html.DropDownListFor(x => x.UrunID, (List<SelectListItem>)ViewBag.deger1, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.Cariler.CariAd)
+        @Html.DropDownListFor(x => x.CariId, (List<SelectListItem>)ViewBag.deger2, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.Personel)
+        @Html.DropDownListFor(x => x.PersonelId, (List<SelectListItem>)ViewBag.deger3, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.BirimFiyat)
+        @Html.TextBoxFor(x => x.BirimFiyat, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.Adet)
+        @Html.TextBoxFor(x => x.Adet, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.Tutar)
+        @Html.TextBoxFor(x => x.Tutar, new { @class = "form-control" })
+        <br />
 
+        <button class="button"><span>Ekle</span></button>
+
+    </form>
+</body>

@@ -4,39 +4,46 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<br />
-<h2>Kargo Detay Sayfası</h2>
-<br />
-@using (Html.BeginForm("Index", "Kargo", FormMethod.Get))
-{
-    <p>
-        Kargo Takip Kodu : @Html.TextBox("p")
-        <input type="submit" value="Ara" />
-    </p>
-}
-<br />
-<table class="table table-bordered" , style="margin-top:20px">
-    <tr>
-        <td><h5>Gönderen</h5></td>
-        <td><h5>Alıcı</h5></td>
-        <td><h5>Tarih</h5></td>
-        <td><h5>Detay</h5></td>
-        <td><h5>Takip Kodu</h5></td>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/style/style.css" rel="stylesheet" />
+</head>
+<body>
 
-    </tr>
-    @foreach (var d in Model)
+    <br />
+    <h2>Kargo Detay Sayfası</h2>
+    <br />
+    @using (Html.BeginForm("Index", "Kargo", FormMethod.Get))
     {
-        <tr>
-            <td>@d.GonderenPersonel</td>
-            <td>@d.AliciCari</td>
-            <td>@d.Tarih</td>
-            <td>@d.KargoTakipKodu</td>
-            <td>
-                <a href="/Kargo/KargoDetay/@d.KargoTakipKodu" class="btn btn-info">Detaylar</a>
-            </td>
-        </tr>
+        <p>
+            Kargo Takip Kodu : @Html.TextBox("p")
+            <input type="submit" value="Ara" />
+        </p>
     }
+    <br />
+    <table class="table table-bordered" , style="margin-top:20px">
+        <tr>
+            <td><h5>Gönderen</h5></td>
+            <td><h5>Alıcı</h5></td>
+            <td><h5>Tarih</h5></td>
+            <td><h5>Detay</h5></td>
+            <td><h5>Takip Kodu</h5></td>
+
+        </tr>
+        @foreach (var d in Model)
+        {
+            <tr>
+                <td>@d.GonderenPersonel</td>
+                <td>@d.AliciCari</td>
+                <td>@d.Tarih</td>
+                <td>@d.KargoTakipKodu</td>
+                <td>
+                    <a href="/Kargo/KargoDetay/@d.KargoTakipKodu" class="btn btn-info">Detaylar</a>
+                </td>
+            </tr>
+        }
 
 
-</table>
-<a href="/Kargo/YeniKargoEkle" class="btn btn-primary">Yeni Kargo Ekle</a>
+    </table>
+    <a href="/Kargo/YeniKargoEkle" class="button"><span>Yeni Kargo Ekle</span></a>
+</body>

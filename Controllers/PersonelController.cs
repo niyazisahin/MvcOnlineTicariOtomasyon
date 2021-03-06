@@ -30,21 +30,28 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             ViewBag.deger1 = deger;
             return View();
         }
-        
+
         [HttpPost]
         public ActionResult YeniPersonelEkle(Personel p)
         {
-            if(Request.Files.Count > 0)
-            {
-                string dosyaAdi = Path.GetFileName(Request.Files[0].FileName);
-                string dosyaUzanti = Path.GetExtension(Request.Files[0].FileName);
-                string yol = "~/Image/" + dosyaAdi + dosyaUzanti;
-                Request.Files[0].SaveAs(Server.MapPath(yol));
-                p.PersonelGorsel = "/Image/" + dosyaAdi + dosyaUzanti;
-            }
-            context.Personels.Add(p);
-            context.SaveChanges();
-            return RedirectToAction("Index");
+                if (Request.Files.Count > 0)
+                {
+                    string dosyaAdi = Path.GetFileName(Request.Files[0].FileName);
+                    string dosyaUzanti = Path.GetExtension(Request.Files[0].FileName);
+                    string yol = "~/Image/" + dosyaAdi + dosyaUzanti;
+                    Request.Files[0].SaveAs(Server.MapPath(yol));
+                    p.PersonelGorsel = "/Image/" + dosyaAdi + dosyaUzanti;
+                }
+                if (ModelState.IsValid == true)
+                {
+                    context.Personels.Add(p);
+                    context.SaveChanges();
+                    return RedirectToAction("Index");
+
+                }
+
+            return View("YeniPersonelEkle");
+
         }
 
         public ActionResult PersonelSil(int id)
@@ -58,13 +65,13 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         [HttpGet]
         public ActionResult PersonelGuncelle(int id)
         {
-            List<SelectListItem> deger = (from x in context.Personels.ToList()
-                                          select new SelectListItem
-                                          {
-                                              Text = x.Departman.DepartmanAd,
-                                              Value = x.DepartmanId.ToString()
-                                          }).ToList();
-            ViewBag.deger2 = deger;
+            //List<SelectListItem> deger = (from x in context.Personels.ToList()
+            //                              select new SelectListItem
+            //                              {
+            //                                  Text = x.Departman.DepartmanAd,
+            //                                  Value = x.DepartmanId.ToString()
+            //                              }).ToList();
+            //ViewBag.deger2 = deger;
             var personel = context.Personels.Find(id);
             return View(personel);
         }
@@ -72,6 +79,8 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         [HttpPost]
         public ActionResult PersonelGuncelle(Personel p)
         {
+            
+
             if (Request.Files.Count > 0)
             {
                 string dosyaAdi = Path.GetFileName(Request.Files[0].FileName);
@@ -80,16 +89,24 @@ namespace MvcOnlineTicariOtomasyon.Controllers
                 Request.Files[0].SaveAs(Server.MapPath(yol));
                 p.PersonelGorsel = "/Image/" + dosyaAdi + dosyaUzanti;
             }
-            var personel = context.Personels.Find(p.PersonelId);
-            personel.PersonelAd = p.PersonelAd;
-            personel.PersonelSoyad = p.PersonelSoyad;
-            personel.PersonelGorsel = p.PersonelGorsel;
-            personel.DepartmanId = p.DepartmanId;
-            context.SaveChanges();
-            return RedirectToAction("Index");
+
+            if(ModelState.IsValid == true)
+            {  
+                var personel = context.Personels.Find(p.PersonelId);
+                personel.PersonelAd = p.PersonelAd;
+                personel.PersonelSoyad = p.PersonelSoyad;
+                personel.PersonelGorsel = p.PersonelGorsel;
+                personel.DepartmanId = p.DepartmanId;
+                context.SaveChanges();
+                return RedirectToAction("Index");
+
+            }
+            return View("PersonelGuncelle");
+
         }
 
-        public ActionResult PersonelListe() {
+        public ActionResult PersonelListe()
+        {
 
             var personeller = context.Personels.ToList();
 

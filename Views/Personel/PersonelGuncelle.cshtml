@@ -3,35 +3,42 @@
     ViewBag.Title = "PersonelGuncelle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<br />
-<h2>PersonelGuncelle</h2>
-<br />
-@using (Html.BeginForm("PersonelGuncelle", "Personel", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/style/style.css" rel="stylesheet" />
+</head>
+<body>
 
-    @Html.HiddenFor(x => x.PersonelId)
+    <br />
+    <h2>PersonelGuncelle</h2>
+    <br />
+    @using (Html.BeginForm("PersonelGuncelle", "Personel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
 
-    @Html.LabelFor(x => x.PersonelAd)
-    <br />
-    @Html.TextBoxFor(x => x.PersonelAd, new { @class = "form-control" })
-    @*@Html.ValidationMessageFor(x => x.UrunAd, "", new { @style = "color:red" })*@
-    <br />
-    @Html.LabelFor(x => x.PersonelSoyad)
-    <br />
-    @Html.TextBoxFor(x => x.PersonelSoyad, new { @class = "form-control" })
-    @*@Html.ValidationMessageFor(x => x.Marka, "", new { @style = "color:red" })*@
-    <br />
-    @Html.LabelFor(x => x.Departman)
-    <br />
-    @Html.DropDownListFor(x => x.DepartmanId, (List<SelectListItem>)ViewBag.deger2, new { @class = "form-control" })
-    <br />
-    @Html.LabelFor(x => x.PersonelGorsel)
-    <br />
-    @*@Html.TextBoxFor(x => x.PersonelGorsel, new { @class = "form-control" })*@
-    <input type="file" name="PersonelGorsel" value="@Model.PersonelGorsel" />
-    <br />
-    <br />
+        @Html.HiddenFor(x => x.PersonelId)
 
-    <button class="btn btn-info">Kaydet</button>
-}
+        @Html.LabelFor(x => x.PersonelAd)
+        <br />
+        @Html.TextBoxFor(x => x.PersonelAd, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.PersonelAd, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(x => x.PersonelSoyad)
+        <br />
+        @Html.TextBoxFor(x => x.PersonelSoyad, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.PersonelSoyad, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(x => x.Departman)
+        <br />
+        @Html.TextBoxFor(x => x.DepartmanId, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.DepartmanId, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(x => x.PersonelGorsel)
+        <br />
+        @*@Html.TextBoxFor(x => x.PersonelGorsel, new { @class = "form-control" })*@
+        <input type="file" name="PersonelGorsel" value="~/Image/unnamed.png.png" required="" />
+        <br />
+        <br />
 
+        <button class="button"><span>Kaydet</span></button>
+    }
+</body>

@@ -4,50 +4,57 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<br />
-@using (Html.BeginForm("Index", "Urun", FormMethod.Get))
-{
-<p>
-    Ürün Adı : @Html.TextBox("p")
-    <input type="submit" value="Ara" />
-</p>
-}
-<br />
-<table class="table table-bordered">
-    <tr>
-        <td>ID</td>
-        <td>Ad</td>
-        <td>Marka</td>
-        <td>Stok</td>
-        <td>Durum</td>
-        <td>Alış Fiyatı</td>
-        <td>Satış Fiyatı</td>
-        <td>Kategori Ad</td>
-        <td>Ürün Görseli</td>
-        <td>Sil</td>
-        <td>Güncelle</td>
-        <td>Sat</td>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/style/style.css" rel="stylesheet" />
+</head>
+<body>
 
-
-    </tr>
-
-    @foreach (var u in Model)
+    <br />
+    @using (Html.BeginForm("Index", "Urun", FormMethod.Get))
     {
+        <p>
+            Ürün Adı : @Html.TextBox("p")
+            <input type="submit" value="Ara" />
+        </p>
+    }
+    <br />
+    <table class="table table-bordered">
         <tr>
-            <td>@u.UrunID</td>
-            <td>@u.UrunAd</td>
-            <td>@u.Marka</td>
-            <td>@u.Stok</td>
-            <td>@u.Durum</td>
-            <td>@u.AlisFiyati ₺</td>
-            <td>@u.SatisFiyati ₺ </td>
-            <td>@u.Kategori.KategoriAd</td>
-            <td><img src="@u.UrunGorsel" style="height:100px;width:100px;" /></td>
-            <td><a href="/Urun/UrunSil/@u.UrunID" class="btn btn-danger">Sil</a></td>
-            <td><a href="/Urun/UrunGetir/@u.UrunID" class="btn btn-success">Guncelle</a></td>
-            <td><a href="/Urun/SatisYap/@u.UrunID" class="btn btn-info">Sat</a></td>
+            <td>ID</td>
+            <td>Ad</td>
+            <td>Marka</td>
+            <td>Stok</td>
+            <td>Durum</td>
+            <td>Alış Fiyatı</td>
+            <td>Satış Fiyatı</td>
+            <td>Kategori Ad</td>
+            <td>Ürün Görseli</td>
+            <td>Sil</td>
+            <td>Güncelle</td>
+            <td>Sat</td>
+
 
         </tr>
-    }
-</table>
-<a href="/Urun/YeniUrunEkle" class="btn btn-success">Yeni Ürün Ekle</a>
+
+        @foreach (var u in Model)
+        {
+            <tr>
+                <td>@u.UrunID</td>
+                <td>@u.UrunAd</td>
+                <td>@u.Marka</td>
+                <td>@u.Stok</td>
+                <td>@u.Durum</td>
+                <td>@u.AlisFiyati ₺</td>
+                <td>@u.SatisFiyati ₺ </td>
+                <td>@u.Kategori.KategoriAd</td>
+                <td><img src="@u.UrunGorsel" style="height:100px;width:100px;" /></td>
+                <td><a href="/Urun/UrunSil/@u.UrunID" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Urun/UrunGetir/@u.UrunID" class="btn btn-success">Guncelle</a></td>
+                <td><a href="/Urun/SatisYap/@u.UrunID" class="btn btn-info">Sat</a></td>
+
+            </tr>
+        }
+    </table>
+    <a href="/Urun/YeniUrunEkle" class="button"><span>Yeni Ürün Ekle</span></a>
+</body>

@@ -5,46 +5,67 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<br />
-<h2>Yeni Urun Ekle</h2>
-<br />
-<form class="form-group" method="post">
-    @Html.LabelFor(x => x.UrunAd)
-    <br />
-    @Html.TextBoxFor(x => x.UrunAd, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.UrunAd, "", new { @style = "color:red" })
-    <br />
-    @Html.LabelFor(x => x.Marka)
-    <br />
-    @Html.TextBoxFor(x => x.Marka, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.Marka, "", new { @style = "color:red" })
-    <br />
-    @Html.LabelFor(x => x.Stok)
-    <br />
-    @Html.TextBoxFor(x => x.Stok, new { @class = "form-control" })
 
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/style/style.css" rel="stylesheet" />
+</head>
+<body>
     <br />
-    @Html.LabelFor(x => x.Durum)
+    <h2>Yeni Urun Ekle</h2>
     <br />
-    @Html.TextBoxFor(x => x.Durum, new { @class = "form-control" })
-    <br />
-    @Html.LabelFor(x => x.AlisFiyati)
-    <br />
-    @Html.TextBoxFor(x => x.AlisFiyati, new { @class = "form-control" })
-    <br />
-    @Html.LabelFor(x => x.SatisFiyati)
-    <br />
-    @Html.TextBoxFor(x => x.SatisFiyati, new { @class = "form-control" })
-    <br />
-    @Html.LabelFor(x => x.Kategori.KategoriAd)
-    <br />
-    @Html.DropDownListFor(x => x.KategoryId, (List<SelectListItem>)ViewBag.deger1, new { @class = "form-control" })
-    <br />
-    @Html.LabelFor(x => x.UrunGorsel)
-    <br />
-    @Html.TextBoxFor(x => x.UrunGorsel, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.UrunGorsel, "", new { @style = "color:red" })
-    <br />
-    <button class="btn btn-info">Ekle</button>
+    <form class="form-group" method="post">
+        @Html.LabelFor(x => x.UrunAd)
+        <br />
+        @Html.TextBoxFor(x => x.UrunAd, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.UrunAd, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(x => x.Durum)
+        <br />
+        @Html.TextBoxFor(x => x.Durum, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Durum, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(x => x.Stok)
+        <br />
+        @Html.TextBoxFor(x => x.Stok, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Stok, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(x => x.Marka)
+        <br />
+        @Html.TextBoxFor(x => x.Marka, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Marka, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(x => x.AlisFiyati)
+        <br />
+        @Html.TextBoxFor(x => x.AlisFiyati, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.AlisFiyati, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(x => x.SatisFiyati)
+        <br />
+        @Html.TextBoxFor(x => x.SatisFiyati, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.SatisFiyati, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(x => x.UrunGorsel)
+        <br />
+        @Html.TextBoxFor(x => x.UrunGorsel, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.UrunGorsel, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(x => x.KategoryId)
+        <br />
+        @*@Html.DropDownListFor(x => x.DepartmanId, (List<SelectListItem>)ViewBag.deger2, new { @class = "form-control" })*@
+        @Html.TextBoxFor(x => x.KategoryId, new { @class = "form-control" })
 
-</form>
+        @Html.ValidationMessageFor(x => x.KategoryId, "", new { @style = "color:red" })
+        <br />
+
+        <button class="button"><span> Ekle </span></button>
+
+    </form>
+</body>
+
+
+
+
+
+
+

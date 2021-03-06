@@ -3,30 +3,37 @@
     ViewBag.Title = "YeniCariEkle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<br />
-<h2>Yeni Cari Ekleme Sayfası</h2>
-<br />
-<form c method="post" class="form-group">
-    @Html.LabelFor(x => x.CariAd)
-    <br />
-    @Html.TextBoxFor(x => x.CariAd, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.CariAd, "", new { @style = "color:red" })
-    <br />
-    @Html.LabelFor(x => x.CariSoyad)
-    <br />
-    @Html.TextBoxFor(x => x.CariSoyad, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.CariSoyad, "", new { @style = "color:red" })
-    <br />
-    @Html.LabelFor(x => x.CariSehir)
-    <br />
-    @Html.TextBoxFor(x => x.CariSehir, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.CariSehir, "", new { @style = "color:red" })
-    <br />
-    @Html.LabelFor(x => x.CariMail)
-    <br />
-    @Html.TextBoxFor(x => x.CariMail, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.CariMail, "", new { @style = "color:red" })
-    <br />
-    <button class="btn btn-info">Ekle</button>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/style/style.css" rel="stylesheet" />
+</head>
+<body>
 
-</form>
+    <br />
+    <h2>Yeni Cari Ekleme Sayfası</h2>
+    <br />
+    <form c method="post" class="form-group">
+        @Html.LabelFor(x => x.CariAd)
+        <br />
+        @Html.TextBoxFor(x => x.CariAd, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CariAd, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(x => x.CariSoyad)
+        <br />
+        @Html.TextBoxFor(x => x.CariSoyad, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CariSoyad, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(x => x.CariSehir)
+        <br />
+        @Html.TextBoxFor(x => x.CariSehir, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CariSehir, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(x => x.CariMail)
+        <br />
+        @Html.TextBoxFor(x => x.CariMail, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CariMail, "", new { @style = "color:red" })
+        <br />
+        <button class="button"><span>Ekle</span></button>
+
+    </form>
+</body>

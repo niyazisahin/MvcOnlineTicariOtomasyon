@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+//using System.Web;
 using System.Web.Mvc;
 using MvcOnlineTicariOtomasyon.Models.Siniflar;
 
@@ -32,6 +32,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
                                               Text = x.KategoriAd,
                                               Value = x.KategoryId.ToString()
                                           }).ToList();
+
             ViewBag.deger1 = deger;
             return View();
         }
@@ -39,13 +40,15 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         [HttpPost]
         public ActionResult YeniUrunEkle(Urun u)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid == true)
             {
-                return View("YeniUrunEkle");
+                context.Uruns.Add(u);
+                context.SaveChanges();
+                return RedirectToAction("Index");
             }
-            context.Uruns.Add(u);
-            context.SaveChanges();
-            return RedirectToAction("Index");
+            
+            return View("YeniUrunEkle"); 
+            
 
         }
 
@@ -65,13 +68,13 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             //{
             //    return View("UrunGetir");
             //}
-            List<SelectListItem> deger = (from x in context.Kategoris.ToList()
-                                          select new SelectListItem
-                                          {
-                                              Text = x.KategoriAd,
-                                              Value = x.KategoryId.ToString()
-                                          }).ToList();
-            ViewBag.deger1 = deger;
+            //List<SelectListItem> deger = (from x in context.Kategoris.ToList()
+            //                              select new SelectListItem
+            //                              {
+            //                                  Text = x.KategoriAd,
+            //                                  Value = x.KategoryId.ToString()
+            //                              }).ToList();
+            //ViewBag.deger1 = deger;
             var urundeger = context.Uruns.Find(id);
 
             return View("UrunGetir", urundeger);  
@@ -80,26 +83,27 @@ namespace MvcOnlineTicariOtomasyon.Controllers
 
         public ActionResult UrunGuncelle(Urun u)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return View("UrunGetir");
-            //}
+            if (ModelState.IsValid)
+            {
+                Urun urun = context.Uruns.Find(u.UrunID);
 
-            Urun urun = context.Uruns.Find(u.UrunID);
+                urun.Stok = u.Stok;
+                urun.UrunAd = u.UrunAd;
+                urun.Marka = u.Marka;
+                urun.AlisFiyati = u.AlisFiyati;
+                urun.SatisFiyati = u.SatisFiyati;
 
-            urun.Stok = u.Stok;
-            urun.UrunAd = u.UrunAd;
-            urun.Marka = u.Marka;
-            urun.AlisFiyati = u.AlisFiyati;
-            urun.SatisFiyati = u.SatisFiyati;
+                urun.UrunGorsel = u.UrunGorsel;
+                urun.Durum = u.Durum;
+                urun.KategoryId = u.KategoryId;
 
-            urun.UrunGorsel = u.UrunGorsel;
-            urun.Durum = u.Durum;
-            urun.KategoryId = u.KategoryId;
+                context.SaveChanges();
 
-            context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View("UrunGetir");
 
-            return RedirectToAction("Index");
+            
         }
 
         public ActionResult UrunListesi()

@@ -4,22 +4,28 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<br />
-<h2>Kategori Guncelle</h2>
-<br />
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/style/style.css" rel="stylesheet" />
+</head>
+<body>
 
-@using(Html.BeginForm("KategoriGuncelle", "Kategori", FormMethod.Post))
-{
-<div class="form-group">
-    @Html.HiddenFor(x => x.KategoryId)
-    @Html.LabelFor(x => x.KategoriAd)
-    @Html.TextBoxFor(x => x.KategoriAd, new { @class = "form-control" })
-    
-    @Html.ValidationMessageFor(x => x.KategoriAd, "", new { @style = "color:red" })
+    <br />
+    <h2>Kategori Guncelle</h2>
+    <br />
 
-</div>
-    <button class="btn btn-warning">Güncelle</button>
-   
-}
+    @using (Html.BeginForm("KategoriGuncelle", "Kategori", FormMethod.Post))
+    {
+        <div class="form-group">
+            @Html.HiddenFor(x => x.KategoryId)
+            @Html.LabelFor(x => x.KategoriAd)
+            @Html.TextBoxFor(x => x.KategoriAd, new { @class = "form-control" })
 
+            @Html.ValidationMessageFor(x => x.KategoriAd, "", new { @style = "color:red" })
+
+        </div>
+        <button class="btn btn-warning"><span>Güncelle</span></button>
+
+    }
+</body>
 

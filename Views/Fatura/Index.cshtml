@@ -4,53 +4,59 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<br />
-<h2>Faturalar</h2>
-<br />
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/style/style.css" rel="stylesheet" />
+</head>
+<body>
 
-<table class="table table-bordered">
-    <tr>
-        <td>Fatura ID</td>
-        <td>Sıra  No</td>
-        <td>Tarih</td>
-        <td>Saat</td>
-        <td>Vergi Dairesi</td>
-        <td>Teslim Eden</td>
-        <td>Teslim Alan</td>
-        <td>Toplam Tutar</td>
-        <td>Güncelle</td>
-        <td>Detay</td>
-        <td>Yeni Kalem</td>
-    </tr>
-    @foreach (var f in Model)
-    {
+    <br />
+    <h2>Faturalar</h2>
+    <br />
+
+    <table class="table table-bordered">
         <tr>
-            <td>@f.FaturaId</td>
-            <td>@f.FaturaSiraNo</td>
-            <td>@f.Tarih</td>
-            <td>@f.Saat</td>
-            <td>@f.VergiDairesi</td>
-            <td>@f.TeslimAlan</td>
-            <td>@f.TeslimEden</td>
-            <td>@f.ToplamTutar</td>
-            <td><a href="/Fatura/FaturaGuncelle/@f.FaturaId" class="btn btn-warning">Güncelle</a></td>
-            <td><a href="/Fatura/FaturaDetay/@f.FaturaId" class="btn btn-info">Detay</a></td>
-            <td><a href="/Fatura/FaturaDetay/@f.FaturaId" class="btn btn-success">Kalem</a></td>
+            <td>Fatura ID</td>
+            <td>Sıra  No</td>
+            <td>Tarih</td>
+            <td>Saat</td>
+            <td>Vergi Dairesi</td>
+            <td>Teslim Eden</td>
+            <td>Teslim Alan</td>
+            <td>Toplam Tutar</td>
+            <td>Güncelle</td>
+            <td>Detay</td>
+            <td>Yeni Kalem</td>
         </tr>
+        @foreach (var f in Model)
+        {
+            <tr>
+                <td>@f.FaturaId</td>
+                <td>@f.FaturaSiraNo</td>
+                <td>@f.Tarih</td>
+                <td>@f.Saat</td>
+                <td>@f.VergiDairesi</td>
+                <td>@f.TeslimAlan</td>
+                <td>@f.TeslimEden</td>
+                <td>@f.ToplamTutar</td>
+                <td><a href="/Fatura/FaturaGuncelle/@f.FaturaId" class="btn btn-warning">Güncelle</a></td>
+                <td><a href="/Fatura/FaturaDetay/@f.FaturaId" class="btn btn-info">Detay</a></td>
+                <td><a href="/Fatura/FaturaDetay/@f.FaturaId" class="btn btn-success">Kalem</a></td>
+            </tr>
 
-    }
-</table>
-<a href="/Fatura/YeniFaturaEkle" class="btn btn-success"> Yeni Fatura Ekle </a>
-<button class="btn btn-dark" style="color:white;" data-toggle="modal" data-target="#Modal1">PopUp Penceresi</button>
+        }
+    </table>
+    <a href="/Fatura/YeniFaturaEkle" class="button"> <span>Yeni Fatura Ekle</span> </a>
+    <button class="button" style="color:white;" data-toggle="modal" data-target="#Modal1"><span>PopUp</span></button>
 
-<div class="modal" id="Modal1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">
-                    PopUp Dialog Ekranı
-                </h2>
-            </div>
+    <div class="modal" id="Modal1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">
+                        PopUp Dialog Ekranı
+                    </h2>
+                </div>
                 <div class="modal-body">
                     <table class="table table-hover">
                         <tr>
@@ -72,7 +78,8 @@
                     <button type="button" data-dismiss="modal" class="btn btn-danger">Kapat</button>
 
                 </div>
-            
+
+            </div>
         </div>
     </div>
-</div>
+</body>

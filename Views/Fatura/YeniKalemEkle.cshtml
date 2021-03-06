@@ -3,31 +3,38 @@
     ViewBag.Title = "YeniKalemEkle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<br />
-<h2>Yeni Kalem Ekle</h2>
-<br />
-<form class="form-group" method="post">
-    @Html.LabelFor(x => x.Aciklama)
-    <br />
-    @Html.TextBoxFor(x => x.Aciklama, new { @class = "form-control" })
-    <br />
-    @Html.LabelFor(x => x.Miktar)
-    <br />
-    @Html.TextBoxFor(x => x.Miktar, new { @class = "form-control" })
-    <br />
-    @Html.LabelFor(x => x.BirimFiyat)
-    <br />
-    @Html.TextBoxFor(x => x.BirimFiyat, new { @class = "form-control" })
-    <br />
-    @Html.LabelFor(x => x.Tutar)
-    <br />
-    @Html.TextBoxFor(x => x.Tutar, new { @class = "form-control" })
-    <br />
-    @Html.LabelFor(x => x.FaturaId)
-    <br />
-    @Html.TextBoxFor(x => x.FaturaId, new { @class = "form-control" })
-<br />
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/style/style.css" rel="stylesheet" />
+</head>
+<body>
 
-<button class="btn btn-primary"> Ekle </button>
+    <br />
+    <h2>Yeni Kalem Ekle</h2>
+    <br />
+    <form class="form-group" method="post">
+        @Html.LabelFor(x => x.Aciklama)
+        <br />
+        @Html.TextBoxFor(x => x.Aciklama, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.Miktar)
+        <br />
+        @Html.TextBoxFor(x => x.Miktar, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.BirimFiyat)
+        <br />
+        @Html.TextBoxFor(x => x.BirimFiyat, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.Tutar)
+        <br />
+        @Html.TextBoxFor(x => x.Tutar, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.FaturaId)
+        <br />
+        @Html.TextBoxFor(x => x.FaturaId, new { @class = "form-control" })
+        <br />
 
-</form>
+        <button class="button"> <span>Ekle</span> </button>
+
+    </form>
+</body>

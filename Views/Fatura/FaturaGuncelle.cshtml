@@ -3,41 +3,55 @@
     ViewBag.Title = "FaturaGuncelle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<br />
-<h2>Fatura Guncelleme Sayfası</h2>
-<br />
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/style/style.css" rel="stylesheet" />
+</head>
+<body>
 
-@using (Html.BeginForm("FaturaGuncelle", "Fatura", FormMethod.Post))
-{
+    <br />
+    <h2>Fatura Guncelleme Sayfası</h2>
+    <br />
 
-@Html.HiddenFor(x => x.FaturaId)
+    @using (Html.BeginForm("FaturaGuncelle", "Fatura", FormMethod.Post))
+    {
 
-@Html.LabelFor(x => x.FaturaSiraNo)
-<br />
-@Html.TextBoxFor(x => x.FaturaSiraNo, new { @class = "form-control" })
-@*@Html.ValidationMessageFor(x => x.UrunAd, "", new { @style = "color:red" })*@
-<br />
-@Html.LabelFor(x => x.Tarih)
-<br />
-@Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })
-@*@Html.ValidationMessageFor(x => x.Marka, "", new { @style = "color:red" })*@
-<br />
-@Html.LabelFor(x => x.Saat)
-<br />
-@Html.TextBoxFor(x => x.Saat, new { @class = "form-control" })
-<br />
-@Html.LabelFor(x => x.VergiDairesi)
-<br />
-@Html.TextBoxFor(x => x.VergiDairesi, new { @class = "form-control" })
-<br />
-@Html.LabelFor(x => x.TeslimAlan)
-<br />
-@Html.TextBoxFor(x => x.TeslimAlan, new { @class = "form-control" })
-<br />
-@Html.LabelFor(x => x.TeslimEden)
-<br />
-@Html.TextBoxFor(x => x.TeslimEden, new { @class = "form-control" })
-<br />
+        @Html.HiddenFor(x => x.FaturaId)
 
-<button class="btn btn-info">Kaydet</button>
-}
+        @Html.LabelFor(x => x.FaturaSiraNo)
+        <br />
+        @Html.TextBoxFor(x => x.FaturaSiraNo, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.FaturaSiraNo, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(x => x.Tarih)
+        <br />
+        @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Tarih, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(x => x.Saat)
+        <br />
+        @Html.TextBoxFor(x => x.Saat, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Saat, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(x => x.VergiDairesi)
+        <br />
+        @Html.TextBoxFor(x => x.VergiDairesi, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.VergiDairesi, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(x => x.TeslimAlan)
+        <br />
+        @Html.TextBoxFor(x => x.TeslimAlan, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.TeslimAlan, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(x => x.TeslimEden)
+        <br />
+        @Html.TextBoxFor(x => x.TeslimEden, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.TeslimEden, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(x => x.Saat)
+        <br />
+        @Html.TextBoxFor(x => x.ToplamTutar, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.ToplamTutar, "", new { @style = "color:red" })
+        <button class="button"><span>Kaydet</span></button>
+    }
+</body>

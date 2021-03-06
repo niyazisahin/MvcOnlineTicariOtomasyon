@@ -26,9 +26,15 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         [HttpPost]
         public ActionResult YeniFaturaEkle(Fatura f)
         {
-            context.Faturas.Add(f);
-            context.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid == true)
+            {
+                context.Faturas.Add(f);
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View("YeniFaturaEkle");
+            
         }
 
         [HttpGet]
@@ -41,6 +47,8 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         [HttpPost]
         public ActionResult FaturaGuncelle(Fatura f)
         {
+            if (ModelState.IsValid == true)
+            {
             var fatura = context.Faturas.Find(f.FaturaId);
             fatura.FaturaSiraNo = f.FaturaSiraNo;
             fatura.Tarih = f.Tarih;
@@ -48,8 +56,13 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             fatura.TeslimEden = f.TeslimEden;
             fatura.TeslimAlan = f.TeslimAlan;
             fatura.VergiDairesi = f.VergiDairesi;
+            fatura.ToplamTutar = f.ToplamTutar;
             context.SaveChanges();
             return RedirectToAction("Index");
+            }
+
+            return View("FaturaGuncelle");
+
         }
         public ActionResult FaturaDetay(int id)
         {
