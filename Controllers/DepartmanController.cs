@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using MvcOnlineTicariOtomasyon.Models.Siniflar;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
-{
+{[Authorize]
     public class DepartmanController : Controller
     {
         Context context = new Context();
@@ -18,7 +18,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         }
 
 
-        [Authorize(Roles ="A")]
+        
         [HttpGet]
         public ActionResult DepartmanEkle()
         {

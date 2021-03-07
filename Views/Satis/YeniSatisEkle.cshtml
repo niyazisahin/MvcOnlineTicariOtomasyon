@@ -1,5 +1,4 @@
 ﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.SatisHareket
-
 @{
     ViewBag.Title = "YeniSatisEkle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -17,25 +16,35 @@
     <form class="form-group" method="post">
 
         @*@Html.LabelFor(x => x.Tarih)
-            @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })*@
+        @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })*@
         <br />
         @Html.LabelFor(x => x.Urun)
-        @Html.DropDownListFor(x => x.UrunID, (List<SelectListItem>)ViewBag.deger1, new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.UrunID, new { @class = "form-control" })
+        @*@Html.DropDownListFor(x => x.UrunID, (List<SelectListItem>)ViewBag.deger1, new { @class = "form-control" })*@
+        @Html.ValidationMessageFor(x => x.UrunID, "", new { @style = "color:red" })
         <br />
         @Html.LabelFor(x => x.Cariler.CariAd)
-        @Html.DropDownListFor(x => x.CariId, (List<SelectListItem>)ViewBag.deger2, new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.CariId, new { @class = "form-control" })
+        @*@Html.DropDownListFor(x => x.CariId, (List<SelectListItem>)ViewBag.deger2, new { @class = "form-control" })*@
+
+        @Html.ValidationMessageFor(x => x.CariId, "", new { @style = "color:red" })
         <br />
         @Html.LabelFor(x => x.Personel)
-        @Html.DropDownListFor(x => x.PersonelId, (List<SelectListItem>)ViewBag.deger3, new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.PersonelId, new { @class = "form-control" })
+        @*@Html.DropDownListFor(x => x.PersonelId, (List<SelectListItem>)ViewBag.deger3, "Seçiniz ", new { @class = "form-control" })*@
+        @Html.ValidationMessageFor(x => x.PersonelId, "", new { @style = "color:red" })
         <br />
         @Html.LabelFor(x => x.BirimFiyat)
         @Html.TextBoxFor(x => x.BirimFiyat, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.BirimFiyat, "", new { @style = "color:red" })
         <br />
         @Html.LabelFor(x => x.Adet)
         @Html.TextBoxFor(x => x.Adet, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Adet, "", new { @style = "color:red" })
         <br />
         @Html.LabelFor(x => x.Tutar)
         @Html.TextBoxFor(x => x.Tutar, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Tutar, "", new { @style = "color:red" })
         <br />
 
         <button class="button"><span>Ekle</span></button>

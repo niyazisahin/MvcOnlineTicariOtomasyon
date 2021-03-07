@@ -65,13 +65,6 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         [HttpGet]
         public ActionResult PersonelGuncelle(int id)
         {
-            //List<SelectListItem> deger = (from x in context.Personels.ToList()
-            //                              select new SelectListItem
-            //                              {
-            //                                  Text = x.Departman.DepartmanAd,
-            //                                  Value = x.DepartmanId.ToString()
-            //                              }).ToList();
-            //ViewBag.deger2 = deger;
             var personel = context.Personels.Find(id);
             return View(personel);
         }

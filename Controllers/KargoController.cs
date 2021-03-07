@@ -21,18 +21,21 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             return View(kargolar.ToList());
         }
 
-        [HttpGet]
-        public ActionResult YeniKargoEkle()
+        public string KodUret()
         {
-
             Random random = new Random();
             string[] karakterler = { "A", "B", "C", "D", "E" };
             int s1 = random.Next(100, 1000);
             int s2 = random.Next(100, 1000);
             int s3 = random.Next(10, 99);
             string kod = s1.ToString() + karakterler[random.Next(0, 5)] + s2.ToString() + karakterler[random.Next(0, 5)] + s3.ToString();
-            ViewBag.takipKod = kod;
+            return kod;
+        }
+        [HttpGet]
+        public ActionResult YeniKargoEkle()
+        {
 
+            ViewBag.takipKod = KodUret();
 
 
             List<SelectListItem> deger2 = (from x in context.Carilers.ToList()
@@ -56,10 +59,16 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         [HttpPost]
         public ActionResult YeniKargoEkle(KargoDetay k)
         {
-            k.Tarih = DateTime.Parse(DateTime.Now.ToShortDateString());
-            context.KargoDetays.Add(k);
-            context.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid == true)
+            {
+                    k.Tarih = DateTime.Parse(DateTime.Now.ToShortDateString());
+                    context.KargoDetays.Add(k);
+                    context.SaveChanges();
+                    return RedirectToAction("Index");
+            }
+            ViewBag.takipKod = KodUret();
+            return View("YeniKargoEkle");
+            
         }
 
         public ActionResult KargoDetay(string id)

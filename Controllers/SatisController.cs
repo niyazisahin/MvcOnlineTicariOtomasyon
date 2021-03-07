@@ -29,11 +29,11 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             ViewBag.deger1 = deger;
 
             List<SelectListItem> deger2 = (from x in context.Carilers.ToList()
-                                          select new SelectListItem
-                                          {
-                                              Text = x.CariAd + " " +  x.CariSoyad,
-                                              Value = x.CariId.ToString()
-                                          }).ToList();
+                                           select new SelectListItem
+                                           {
+                                               Text = x.CariAd + " " + x.CariSoyad,
+                                               Value = x.CariId.ToString()
+                                           }).ToList();
             ViewBag.deger2 = deger2;
 
             List<SelectListItem> deger3 = (from x in context.Personels.ToList()
@@ -44,15 +44,24 @@ namespace MvcOnlineTicariOtomasyon.Controllers
                                            }).ToList();
             ViewBag.deger3 = deger3;
             return View();
+
+            
         }
 
         [HttpPost]
         public ActionResult YeniSatisEkle(SatisHareket s)
         {
-            context.SatisHarekets.Add(s);
-            s.Tarih = DateTime.Parse(DateTime.Now.ToShortDateString());
-            context.SaveChanges();
-            return RedirectToAction("Index");
+            if(ModelState.IsValid == true)
+            {
+                    s.Tarih = DateTime.Parse(DateTime.Now.ToShortDateString());
+                    context.SatisHarekets.Add(s);
+                    
+                    context.SaveChanges();
+                    return RedirectToAction("Index");
+            }
+
+            return View("YeniSatisEkle");
+            
         }
 
         [HttpGet]
@@ -91,6 +100,8 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         [HttpPost]
         public ActionResult SatisGuncelle(SatisHareket s)
         {
+            if (ModelState.IsValid == true)
+            {
             var satis = context.SatisHarekets.Find(s.SatisId);
             satis.UrunID = s.UrunID;
             satis.CariId = s.CariId;
@@ -101,6 +112,9 @@ namespace MvcOnlineTicariOtomasyon.Controllers
 
             context.SaveChanges();
             return RedirectToAction("Index");
+            }
+            return View("SatisGuncelle");
+
 
         }
 

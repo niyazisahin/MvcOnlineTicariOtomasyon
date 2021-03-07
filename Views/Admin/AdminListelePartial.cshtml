@@ -1,0 +1,17 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@model  List<Admin>
+
+<table class="table table-bordered">
+    <tr>
+        <td>Kullanıcı Ad</td>
+        <td>Yetki</td>
+    </tr>
+    @foreach (var admin in Model)
+    {
+        <tr>
+            <td>@admin.KullaniciAd</td>
+            <td>@admin.Yetki</td>
+        </tr>
+    }
+
+</table>

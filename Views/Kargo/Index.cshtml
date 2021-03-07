@@ -26,8 +26,9 @@
             <td><h5>Gönderen</h5></td>
             <td><h5>Alıcı</h5></td>
             <td><h5>Tarih</h5></td>
-            <td><h5>Detay</h5></td>
             <td><h5>Takip Kodu</h5></td>
+            <td><h5>Açıklama</h5></td>
+            <td><h5>Detaylar</h5></td>
 
         </tr>
         @foreach (var d in Model)
@@ -37,6 +38,7 @@
                 <td>@d.AliciCari</td>
                 <td>@d.Tarih</td>
                 <td>@d.KargoTakipKodu</td>
+                <td>@d.Aciklama</td>
                 <td>
                     <a href="/Kargo/KargoDetay/@d.KargoTakipKodu" class="btn btn-info">Detaylar</a>
                 </td>

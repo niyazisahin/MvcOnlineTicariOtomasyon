@@ -142,6 +142,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CariController.cs" />
     <Compile Include="Controllers\CariPanelController.cs" />
     <Compile Include="Controllers\DepartmanController.cs" />
@@ -2907,6 +2908,10 @@
     <Content Include="Views\Error\Page404.cshtml" />
     <Content Include="Views\Kategori\DropDownListKategoriUrun.cshtml" />
     <Content Include="Views\Fatura\DinamikFaturalar.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\AdminListelePartial.cshtml" />
+    <Content Include="Views\Admin\AdminBilgiGuncellePartial.cshtml" />
+    <Content Include="Views\Admin\AdminDuyuruPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

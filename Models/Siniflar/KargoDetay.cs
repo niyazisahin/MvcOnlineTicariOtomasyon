@@ -14,6 +14,7 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
 
         [Column(TypeName = "VarChar")]
         [StringLength(250)]
+        [Required]
         public string Aciklama { get; set; }
 
         [Column(TypeName = "VarChar")]
@@ -22,10 +23,12 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
 
         [Column(TypeName = "VarChar")]
         [StringLength(20)]
+        [Required]
         public string GonderenPersonel { get; set; }
 
         [Column(TypeName = "VarChar")]
         [StringLength(20)]
+        [Required]
         public string AliciCari { get; set; }
         public DateTime Tarih { get; set; }
     }

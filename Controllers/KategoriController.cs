@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,6 +13,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
 {
     public class KategoriController : Controller
     {
+        dynamic model = new ExpandoObject();
         // GET: Kategori
         Context context = new Context();
         public ActionResult Index(int sayfa = 1)
@@ -67,11 +69,12 @@ namespace MvcOnlineTicariOtomasyon.Controllers
 
         public ActionResult DropDownListKategoriUrun()
         {
+            //dynamic model = new ExpandoObject();
             DropDownListClass ddlClass = new DropDownListClass();
             ddlClass.Kategoriler = new SelectList(context.Kategoris, "KategoryId", "KategoriAd");
             ddlClass.Urunler = new SelectList(context.Uruns, "UrunId", "UrunAd");
-
-            return View(ddlClass);
+            model.ddl = ddlClass;
+            return View(model);
         }
 
         public JsonResult KategoriyeGoreUrunGetir(int p)

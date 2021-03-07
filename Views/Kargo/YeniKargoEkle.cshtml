@@ -19,22 +19,22 @@
         <br />
         @Html.LabelFor(x => x.GonderenPersonel)
         <br />
-        @Html.DropDownListFor(x => x.GonderenPersonel, (List<SelectListItem>)ViewBag.deger3, new { @class = "form-control" })
-        @*@Html.ValidationMessageFor(x => x.UrunAd, "", new { @style = "color:red" })*@
+        @Html.TextBoxFor(x => x.GonderenPersonel, new { @class = "form-control" })
+        @*@Html.DropDownListFor(x => x.GonderenPersonel, (List<SelectListItem>)ViewBag.deger3, new { @class = "form-control" })*@
+        @Html.ValidationMessageFor(x => x.GonderenPersonel, "", new { @style = "color:red" })
         <br />
         @Html.LabelFor(x => x.AliciCari)
         <br />
-        @Html.DropDownListFor(x => x.AliciCari, (List<SelectListItem>)ViewBag.deger2, new { @class = "form-control" })
-        @*@Html.ValidationMessageFor(x => x.Marka, "", new { @style = "color:red" })*@
+        @Html.TextBoxFor(x => x.AliciCari, new { @class = "form-control" })
+        @*@Html.DropDownListFor(x => x.AliciCari, (List<SelectListItem>)ViewBag.deger2, new { @class = "form-control" })*@
+        @Html.ValidationMessageFor(x => x.AliciCari, "", new { @style = "color:red" })
         <br />
         @Html.LabelFor(x => x.Aciklama)
         <br />
         @Html.TextAreaFor(x => x.Aciklama, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Aciklama, "", new { @style = "color:red" })
 
         <br />
-        @*@Html.LabelFor(x => x.KargoTakipKodu)
-            <br />
-            @Html.TextBoxFor(x => x.KargoTakipKodu, new { @class = "form-control" })*@
         <br />
         <button class="button"><span>Ekle</span></button>
 
