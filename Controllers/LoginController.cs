@@ -25,24 +25,51 @@ namespace MvcOnlineTicariOtomasyon.Controllers
 
         public static void MailGonder(string mesaj, string alici)
         {
-            var kimden = new MailAddress("niyazisahin3800@gmail.com");
-            var kime = new MailAddress(alici);
-            const string konu = "Online TicariOtomasyon";
-            using (var smtp = new SmtpClient 
+            //var kimden = new MailAddress("niyazisahin3800@gmail.com");
+            //var kime = new MailAddress(alici);
+            //const string konu = "Online TicariOtomasyon";
+            //using (var smtp = new SmtpClient 
+            //{
+            //    Host = "smtp.gmail.com",
+            //    Port = 465,
+            //    EnableSsl = true,
+            //    DeliveryMethod = SmtpDeliveryMethod.Network,
+            //    UseDefaultCredentials = false,
+            //    Credentials = new NetworkCredential(kimden.Address, "Nsniyazi32@")
+            //})
+            //{
+            //    using (var message = new MailMessage(kimden, kime) { Subject = konu, Body = mesaj })
+            //    {
+            //        smtp.Send(message);
+            //    }
+            //}
+
+            //////////////////////////////////////////////////////////////
+
+            const string senderID = "niyazisahin3800@gmail.com"; // use sender's email id here..
+             //const string toAddress =  "niyazisahin3800@gmail.com";
+            const string senderPassword = "Nsniyazi32@"; // sender password here...
+            try
             {
-                Host = "smtp.gmail.com",
-                Port = 587,
-                EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(kimden.Address, "Nsniyazi32@")
-            })
-            {
-                using (var message = new MailMessage(kimden, kime) { Subject = konu, Body = mesaj })
+                SmtpClient smtp = new SmtpClient
                 {
-                    smtp.Send(message);
-                }
+                    Host = "smtp.gmail.com", // smtp server address here...
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    Credentials = new System.Net.NetworkCredential(senderID, senderPassword),
+                    Timeout = 30000,
+                };
+                MailMessage message = new MailMessage(senderID, alici, "Online Otomasyon", mesaj);
+                smtp.Send(message);
             }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Error sending mail:" + ex.Message);
+                Console.ResetColor();
+            }
+
         }
 
         [HttpGet]
@@ -63,7 +90,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
                 body.AppendLine("Ad & Soyad: " + kontrol.CariAd + kontrol.CariSoyad);
                 body.AppendLine("E-Mail Adresi: " + kontrol.CariMail);
                 body.AppendLine("Konu: Deneme Mesajı");
-                body.AppendLine("Mesaj: Sitemize Kayıt Olduüunuz İçin Teşekkürler. Bu Bir Deneme Mesajıdır. ");
+                body.AppendLine("Mesaj: Sitemize Kayıt Olduğunuz İçin Teşekkürler. Bu Bir Deneme Mesajıdır. ");
                 MailGonder(body.ToString(), kontrol.CariMail);
             }
             return PartialView();
